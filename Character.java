@@ -124,11 +124,41 @@ public abstract class Character{
         return setInfluenze.contains(i);
     }
 
-    public abstract int getRemainingPx();
+    public int getRemainingPx(){
+        int pxSpesi = 0;
+        Iterator<Disciplina> itD = discIterator();
+        while(itD.hasNext()){
+            pxSpesi += itD.next().costCalc();
+        }
+        Iterator<Influenza> itI = inflIterator();
+        while(itI.hasNext()){
+            pxSpesi += itI.next().costCalc();
+        }
+        //pregi, difetti e stili
+        return getPx() - pxSpesi;
+    }
 
     public abstract boolean isVampire();
 
-    public abstract int getBlood();
+    public int getBlood(){
+        int robu = 0;
+        if(isInDisc("Robustezza")){
+            switch(searchDisc("Robustezza").getLevel()){
+                case 1: robu = 5;
+                case 2: robu = 10;
+                case 3: robu = 15;
+                case 4: robu = 25;
+                case 5: robu = 35;
+                default: robu = 0;
+            }
+        }
+        int vici = 0;
+        if(isInDisc("Vicissitudine")){
+            vici = searchDisc("Vicissitudine").getLevel();
+            if(vici == 1) vici = 0;
+        }
+        return robu+vici;
+    }
 
     public abstract int getWill();
 

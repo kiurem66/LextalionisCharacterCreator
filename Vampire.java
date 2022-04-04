@@ -1,5 +1,3 @@
-import java.util.Iterator;
-
 public class Vampire extends Character{
 
     int gen;
@@ -29,14 +27,6 @@ public class Vampire extends Character{
     @Override
     public int getRemainingPx() {
         int pxSpesi = 0;
-        Iterator<Disciplina> itD = discIterator();
-        while(itD.hasNext()){
-            pxSpesi += itD.next().costCalc();
-        }
-        Iterator<Influenza> itI = inflIterator();
-        while(itI.hasNext()){
-            pxSpesi += itI.next().costCalc();
-        }
         switch(gen){
             case 15: pxSpesi-=8; break;
             case 14: pxSpesi-=4; break;
@@ -45,7 +35,7 @@ public class Vampire extends Character{
             case 10: pxSpesi+=30; break;
         }
         //pregi, difetti e stili
-        return getPx() - pxSpesi;
+        return super.getRemainingPx() - pxSpesi;
     }
 
     @Override
@@ -64,24 +54,7 @@ public class Vampire extends Character{
             case 10: base = 16; break;
             default: base = 10; break;
         }
-        int robu = 0;
-        if(isInDisc("Robustezza")){
-            switch(searchDisc("Robustezza").getLevel()){
-                case 1: robu = 5;
-                case 2: robu = 10;
-                case 3: robu = 15;
-                case 4: robu = 25;
-                case 5: robu = 35;
-                default: robu = 0;
-            }
-        }
-        int vici = 0;
-        if(isInDisc("Vicissitudine")){
-            vici = searchDisc("Vicissitudine").getLevel();
-            if(vici == 1) vici = 0;
-        }
-        //TODO chiedere al master eventuali altri metodi di aumento di punti sangue
-        return base+robu+vici;
+        return base+super.getBlood();
     }
 
     @Override
