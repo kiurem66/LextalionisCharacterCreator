@@ -1,6 +1,22 @@
+import java.util.Iterator;
+
 public class Vampire extends Character{
 
     int gen;
+
+    public Vampire(){
+        super();
+        gen = 13;
+    }
+
+    public Vampire(Character c){
+        super(c);
+        if(c instanceof Vampire){
+            gen = ((Vampire) c).gen;
+        }else{
+            gen = 13;
+        }
+    }
 
     public int getGen() {
         return gen;
@@ -12,8 +28,24 @@ public class Vampire extends Character{
 
     @Override
     public int getRemainingPx() {
-        // TODO Auto-generated method stub
-        return 0;
+        int pxSpesi = 0;
+        Iterator<Disciplina> itD = discIterator();
+        while(itD.hasNext()){
+            pxSpesi += itD.next().costCalc();
+        }
+        Iterator<Influenza> itI = inflIterator();
+        while(itI.hasNext()){
+            pxSpesi += itI.next().costCalc();
+        }
+        switch(gen){
+            case 15: pxSpesi-=8; break;
+            case 14: pxSpesi-=4; break;
+            case 12: pxSpesi+=10; break;
+            case 11: pxSpesi+=20; break;
+            case 10: pxSpesi+=30; break;
+        }
+        //pregi, difetti e stili
+        return getPx() - pxSpesi;
     }
 
     @Override
@@ -27,7 +59,6 @@ public class Vampire extends Character{
         switch(gen){
             case 15: base = 8; break;
             case 14: base = 9; break;
-            case 13: base = 10; break;
             case 12: base = 12; break;
             case 11: base = 14; break;
             case 10: base = 16; break;
@@ -49,13 +80,23 @@ public class Vampire extends Character{
             vici = searchDisc("Vicissitudine").getLevel();
             if(vici == 1) vici = 0;
         }
+        //TODO chiedere al master eventuali altri metodi di aumento di punti sangue
         return base+robu+vici;
     }
 
     @Override
     public int getWill() {
-        // TODO Auto-generated method stub
-        return 0;
+        int base = 0;
+        switch(gen){
+            case 15: base = 5; break;
+            case 14: base = 6; break;
+            case 12: base = 8; break;
+            case 11: base = 9; break;
+            case 10: base = 10; break;
+            default: base = 7; break;
+        }
+        //pregi
+        return base;
     }
     
 }

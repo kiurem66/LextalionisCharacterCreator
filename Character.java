@@ -25,6 +25,13 @@ public abstract class Character{
         fazione = "";
     }
 
+    public Character(Character character){
+        this.name = character.name;
+        this.px = character.px;
+        this.sentiero = character.sentiero;
+        this.fazione = character.fazione;
+    }
+
     public int getPx() {
         return px;
     }
