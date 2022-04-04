@@ -13,8 +13,8 @@ public abstract class Character{
     private String sentiero;
     private String fazione;
 
-    HashSet<Disciplina> setDiscipline = new HashSet<Disciplina>();
-    HashSet<Influenza> setInfluenze = new HashSet<Influenza>();
+    protected HashSet<Disciplina> setDiscipline = new HashSet<Disciplina>();
+    protected HashSet<Influenza> setInfluenze = new HashSet<Influenza>();
     //pregi
     //stili
 
@@ -65,12 +65,24 @@ public abstract class Character{
     }
 
     public void addDisciplina(String nome, int level){
+        Disciplina d = new Disciplina(name);
+        d.setLevel(level);
+        setDiscipline.add(d);
+    }
+
+    public void addDisciplinaNoClan(String nome, int level){
         Disciplina d = new DisciplinaNoClan(name);
         d.setLevel(level);
         setDiscipline.add(d);
     }
 
     public void addInfluenza(String nome, int level){
+        Influenza i = new Influenza(nome);
+        i.setLevel(level);
+        setInfluenze.add(i);
+    }
+
+    public void addInfluenzaNoClan(String nome, int level){
         Influenza i = new InfluenzaNoClan(nome);
         i.setLevel(level);
         setInfluenze.add(i);
@@ -119,4 +131,6 @@ public abstract class Character{
     public abstract int getBlood();
 
     public abstract int getWill();
+
+    public abstract boolean toChoosInfl();
 }

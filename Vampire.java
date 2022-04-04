@@ -98,5 +98,10 @@ public class Vampire extends Character{
         //pregi
         return base;
     }
+
+    @Override
+    public boolean toChoosInfl() {
+        return false;
+    }
     
 }

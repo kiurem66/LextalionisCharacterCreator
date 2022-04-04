@@ -47,4 +47,8 @@ public interface Skill {
         }
         return cost;
     }
+
+    default void incrLevel(){
+        setLevel(getLevel()+1);
+    }
 }
