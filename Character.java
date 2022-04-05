@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -16,8 +17,7 @@ public abstract class Character{
     protected HashSet<Disciplina> setDiscipline = new HashSet<Disciplina>();
     protected HashSet<Influenza> setInfluenze = new HashSet<Influenza>();
     protected HashSet<Style> setStili = new HashSet<Style>();
-    //pregi
-    //stili
+    protected ArrayList<ProCon> setProCon = new ArrayList<ProCon>();
 
     public Character(){
         name = "";
@@ -90,6 +90,10 @@ public abstract class Character{
         return setStili.iterator();
     }
 
+    public Iterator<ProCon> pIterator(){
+        return setProCon.iterator();
+    }
+
     public Disciplina searchDisc(String nome){
         for(Disciplina d : setDiscipline){
             if(d.getName().equals(nome)){
@@ -124,6 +128,14 @@ public abstract class Character{
         return false;
     }
 
+    public void addProCon(ProCon p){
+        setProCon.add(p);
+    }
+
+    public void removeProCon(ProCon p){
+        setProCon.remove(p);
+    }
+
     public int getRemainingPx(){
         int pxSpesi = 0;
         Iterator<Disciplina> itD = discIterator();
@@ -134,7 +146,12 @@ public abstract class Character{
         while(itI.hasNext()){
             pxSpesi += itI.next().costCalc();
         }
-        //pregi, difetti e stili
+        for(ProCon p : setProCon){
+            pxSpesi += p.costo();
+        }
+        for(Style s : setStili){
+            pxSpesi += s.costCalc();
+        }
         return getPx() - pxSpesi;
     }
 
@@ -176,7 +193,15 @@ public abstract class Character{
         setStili.remove(s);
     }
 
-    public abstract int getWill();
+    public int getWill(){
+        int c = 0;
+        for(ProCon p : setProCon){
+            if(p.nome().equals("TODO")){ //TODO chiedere al mastera
+                c+=2;
+            }
+        }
+        return c;
+    }
 
     public abstract boolean toChoosInfl();
 

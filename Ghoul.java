@@ -7,7 +7,7 @@ public class Ghoul extends Character{
 
     @Override
     public int getWill() {
-        return 4;
+        return 4+super.getWill();
         //pregi
     }
 

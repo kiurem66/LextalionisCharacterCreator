@@ -34,7 +34,6 @@ public abstract class Vampire extends Character{
             case 11: pxSpesi+=20; break;
             case 10: pxSpesi+=30; break;
         }
-        //pregi, difetti e stili
         return super.getRemainingPx() - pxSpesi;
     }
 
@@ -68,8 +67,7 @@ public abstract class Vampire extends Character{
             case 10: base = 10; break;
             default: base = 7; break;
         }
-        //pregi
-        return base;
+        return base+super.getWill();
     }
 
     @Override
