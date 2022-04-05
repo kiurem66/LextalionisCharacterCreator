@@ -6,11 +6,13 @@ public class Influenza implements Skill{
     private String name;
     private int level;
     private boolean firstFree;
+    private boolean clan;
 
     public Influenza(String name){
         this.name = name;
         this.level = 0;
         firstFree = false;
+        clan = true;
     }
 
     @Override
@@ -52,5 +54,13 @@ public class Influenza implements Skill{
 
     public void setFirstLevelFree(boolean firstFree) {
         this.firstFree = firstFree;
+    }
+
+    public boolean isClan() {
+        return clan;
+    }
+
+    public void setClan(boolean clan) {
+        this.clan = clan;
     }
 }

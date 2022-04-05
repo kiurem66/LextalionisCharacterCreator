@@ -31,6 +31,7 @@ public abstract class Character{
         this.px = character.px;
         this.sentiero = character.sentiero;
         this.fazione = character.fazione;
+        this.setStili = character.setStili;
     }
 
     public int getPx() {
@@ -65,27 +66,11 @@ public abstract class Character{
         this.sentiero = sentiero;
     }
 
-    public void addDisciplina(String nome, int level){
-        Disciplina d = new Disciplina(nome);
-        d.setLevel(level);
+    public void addDisciplina(Disciplina d){
         setDiscipline.add(d);
     }
 
-    public void addDisciplinaNoClan(String nome, int level){
-        Disciplina d = new DisciplinaNoClan(nome);
-        d.setLevel(level);
-        setDiscipline.add(d);
-    }
-
-    public void addInfluenza(String nome, int level){
-        Influenza i = new Influenza(nome);
-        i.setLevel(level);
-        setInfluenze.add(i);
-    }
-
-    public void addInfluenzaNoClan(String nome, int level){
-        Influenza i = new InfluenzaNoClan(nome);
-        i.setLevel(level);
+    public void addInfluenza(Influenza i){
         setInfluenze.add(i);
     }
 
@@ -115,8 +100,10 @@ public abstract class Character{
     }
 
     public boolean isInDisc(String nome){
-        Disciplina d = new Disciplina(nome);
-        return setDiscipline.contains(d);
+        for (Disciplina d : setDiscipline) {
+            if(d.getName().equals(nome)) return true;
+        }
+        return false;
     }
 
     public Influenza searchInfl(String nome){
@@ -129,8 +116,12 @@ public abstract class Character{
     }
 
     public boolean isInInfl(String nome){
-        Influenza i = new Influenza(nome);
-        return setInfluenze.contains(i);
+        for(Influenza i : setInfluenze){
+            if(i.getName().equals(nome)){
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getRemainingPx(){
@@ -170,13 +161,13 @@ public abstract class Character{
     }
 
     public void removeDisc(Disciplina d){
-        if(d instanceof DisciplinaNoClan){
+        if(!d.isClan()){
             setDiscipline.remove(d);
         }
     }
 
     public void removeInfl(Influenza i){
-        if(i instanceof InfluenzaNoClan){
+        if(!i.isClan()){
             setInfluenze.remove(i);
         }
     }

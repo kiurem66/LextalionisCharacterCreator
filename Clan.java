@@ -5,12 +5,12 @@ public final class Clan {
     public static class Assamita extends Vampire{
         public Assamita(){
             super();
-            addDisciplina("Oscurazione", 0);
-            addDisciplina("Quietus", 0);
-            addDisciplina("Velocità", 0);
-            addInfluenza("Esercito", 0);
-            addInfluenza("Sicurezza", 0);
-            addInfluenza("Sopravvivenza", 0);
+            addDisciplina(new Disciplina.Oscurazione());
+            addDisciplina(new Disciplina.Quietus());
+            addDisciplina(new Disciplina.Velocità());
+            addInfluenza(new Influenza("Esercito"));
+            addInfluenza(new Influenza("Sicurezza"));
+            addInfluenza(new Influenza("Sopravvivenza"));
         }
 
         @Override
@@ -22,12 +22,12 @@ public final class Clan {
     public static class Baali extends Vampire{
         public Baali(){
             super();
-            addDisciplina("Ascendente", 0);
-            addDisciplina("Daimonion", 0);
-            addDisciplina("Oscurazione", 0);
-            addInfluenza("Accademiche", 0);
-            addInfluenza("Occulto", 0);
-            addInfluenza("Sopravvivenza", 0);
+            addDisciplina(new Disciplina.Ascendente());
+            addDisciplina(new Disciplina.Daimonion());
+            addDisciplina(new Disciplina.Oscurazione());
+            addInfluenza(new Influenza("Accademiche"));
+            addInfluenza(new Influenza("Occulto"));
+            addInfluenza(new Influenza("Sopravvivenza"));
         }
 
         @Override
@@ -39,12 +39,12 @@ public final class Clan {
     public static class Brujah extends Vampire{
         public Brujah(){
             super();
-            addDisciplina("Ascendente", 0);
-            addDisciplina("Potenza", 0);
-            addDisciplina("Velocità", 0);
-            addInfluenza("Crimine", 0);
-            addInfluenza("Politica", 0);
-            addInfluenza("Sopravvivenza", 0);
+            addDisciplina(new Disciplina.Ascendente());
+            addDisciplina(new Disciplina.Potenza());
+            addDisciplina(new Disciplina.Velocità());
+            addInfluenza(new Influenza("Crimine"));
+            addInfluenza(new Influenza("Politica"));
+            addInfluenza(new Influenza("Sopravvivenza"));
         }
 
         @Override
@@ -56,12 +56,12 @@ public final class Clan {
     public static class CountryGangrel extends Vampire{
         public CountryGangrel(){
             super();
-            addDisciplina("Animalità", 0);
-            addDisciplina("Proteide", 0);
-            addDisciplina("Robustezza", 0);
-            addInfluenza("Mentore", 0);
-            addInfluenza("Sicurezza", 0);
-            addInfluenza("Sopravvivenza", 0);
+            addDisciplina(new Disciplina.Animalità());
+            addDisciplina(new Disciplina.Proteide());
+            addDisciplina(new Disciplina.Robustezza());
+            addInfluenza(new Influenza("Mentore"));
+            addInfluenza(new Influenza("Sicurezza"));
+            addInfluenza(new Influenza("Sopravvivenza"));
         }
 
         @Override
@@ -73,12 +73,12 @@ public final class Clan {
     public static class CityGangrel extends Vampire{
         public CityGangrel(){
             super();
-            addDisciplina("Oscurazione", 0);
-            addDisciplina("Proteide", 0);
-            addDisciplina("Velocità", 0);
-            addInfluenza("Crimine", 0);
-            addInfluenza("Media", 0);
-            addInfluenza("Medicina", 0);
+            addDisciplina(new Disciplina.Oscurazione());
+            addDisciplina(new Disciplina.Proteide());
+            addDisciplina(new Disciplina.Velocità());
+            addInfluenza(new Influenza("Crimine"));
+            addInfluenza(new Influenza("Media"));
+            addInfluenza(new Influenza("Medicina"));
         }
 
         @Override
@@ -92,10 +92,10 @@ public final class Clan {
 
         public BloodBrothers(){
             super();
-            addDisciplina("Potenza", 0);
-            addDisciplina("Robustezza", 0);
-            addDisciplina("Sanguinis", 0);
-            addInfluenza("Sopravvivenza", 0);
+            addDisciplina(new Disciplina.Potenza());
+            addDisciplina(new Disciplina.Robustezza());
+            addDisciplina(new Disciplina.Sanguinis());
+            addInfluenza(new Influenza("Sopravvivenza"));
             number = 2;
         }
 
@@ -121,12 +121,12 @@ public final class Clan {
     public static class Giovanni extends Vampire{
         public Giovanni(){
             super();
-            addDisciplina("Dominazione", 0);
-            addDisciplina("Necromanzia", 0);
-            addDisciplina("Potenza", 0);
-            addInfluenza("Medicina", 0);
-            addInfluenza("Occulto", 0);
-            addInfluenza("Risorse", 0);
+            addDisciplina(new Disciplina.Dominazione());
+            addDisciplina(new Disciplina.Necromanzia());
+            addDisciplina(new Disciplina.Potenza());
+            addInfluenza(new Influenza("Medicina"));
+            addInfluenza(new Influenza("Occulto"));
+            addInfluenza(new Influenza("Risorse"));
         }
 
         @Override
@@ -138,12 +138,12 @@ public final class Clan {
     public static class Lasombra extends Vampire{
         public Lasombra(){
             super();
-            addDisciplina("Dominazione", 0);
-            addDisciplina("Ottenebramento", 0);
-            addDisciplina("Potenza", 0);
-            addInfluenza("Clero", 0);
-            addInfluenza("Politica", 0);
-            addInfluenza("Mentore", 0);
+            addDisciplina(new Disciplina.Dominazione());
+            addDisciplina(new Disciplina.Ottenebramento());
+            addDisciplina(new Disciplina.Potenza());
+            addInfluenza(new Influenza("Clero"));
+            addInfluenza(new Influenza("Politica"));
+            addInfluenza(new Influenza("Mentore"));
         }
 
         @Override
@@ -155,12 +155,12 @@ public final class Clan {
     public static class Malkavian extends Vampire{
         public Malkavian(){
             super();
-            addDisciplina("Auspex", 0);
-            addDisciplina("Demenza", 0);
-            addDisciplina("Oscurazione", 0);
-            addInfluenza("Accademiche", 0);
-            addInfluenza("Media", 0);
-            addInfluenza("Medicina", 0);
+            addDisciplina(new Disciplina.Auspex());
+            addDisciplina(new Disciplina.Demenza());
+            addDisciplina(new Disciplina.Oscurazione());
+            addInfluenza(new Influenza("Accademiche"));
+            addInfluenza(new Influenza("Media"));
+            addInfluenza(new Influenza("Medicina"));
         }
 
         @Override
@@ -172,12 +172,12 @@ public final class Clan {
     public static class Nosferatu extends Vampire{
         public Nosferatu(){
             super();
-            addDisciplina("Animalità", 0);
-            addDisciplina("Oscurazione", 0);
-            addDisciplina("Potenza", 0);
-            addInfluenza("Media", 0);
-            addInfluenza("Sopravvivenza", 0);
-            addInfluenza("Sicurezza", 0);
+            addDisciplina(new Disciplina.Animalità());
+            addDisciplina(new Disciplina.Oscurazione());
+            addDisciplina(new Disciplina.Potenza());
+            addInfluenza(new Influenza("Media"));
+            addInfluenza(new Influenza("Sopravvivenza"));
+            addInfluenza(new Influenza("Sicurezza"));
         }
 
         @Override
@@ -189,22 +189,15 @@ public final class Clan {
     public static class Pander extends Vampire{
         public Pander(){
             super();
-            addDisciplina("Animalità", 0);
-            addDisciplina("Ascendente", 0);
-            addDisciplina("Auspex", 0);
-            addDisciplina("Dominazione", 0);
-            addDisciplina("Oscurazione", 0);
-            addDisciplina("Potenza", 0);
-            addDisciplina("Robustezza", 0);
-            addDisciplina("Velocità", 0);
-            addInfluenza("Sopravvivenza", 0);
-        }
-
-        @Override
-        public void addDisciplina(String nome, int level) {
-            Disciplina d = new DisciplinaPander(nome);
-            d.setLevel(level);
-            setDiscipline.add(d);
+            addDisciplina(new Disciplina.Animalità());
+            addDisciplina(new Disciplina.Ascendente());
+            addDisciplina(new Disciplina.Auspex());
+            addDisciplina(new Disciplina.Dominazione());
+            addDisciplina(new Disciplina.Oscurazione());
+            addDisciplina(new Disciplina.Potenza());
+            addDisciplina(new Disciplina.Robustezza());
+            addDisciplina(new Disciplina.Velocità());
+            addInfluenza(new Influenza("Sopravvivenza"));
         }
 
         @Override
@@ -222,12 +215,12 @@ public final class Clan {
         //Chi cazzo ha mai giocato un Ravnos?
         public Ravnos(){
             super();
-            addDisciplina("Animalità", 0);
-            addDisciplina("Chimerismo", 0);
-            addDisciplina("Robustezza", 0);
-            addInfluenza("Crimine", 0);
-            addInfluenza("Occulto", 0);
-            addInfluenza("Sopravvivenza", 0);
+            addDisciplina(new Disciplina.Animalità());
+            addDisciplina(new Disciplina.Chimerismo());
+            addDisciplina(new Disciplina.Robustezza());
+            addInfluenza(new Influenza("Crimine"));
+            addInfluenza(new Influenza("Occulto"));
+            addInfluenza(new Influenza("Sopravvivenza"));
         }
 
         @Override
@@ -239,12 +232,12 @@ public final class Clan {
     public static class Salubre extends Vampire{
         public Salubre(){
             super();
-            addDisciplina("Auspex", 0);
-            addDisciplina("Robustezza", 0);
-            addDisciplina("Valeren", 0);
-            addInfluenza("Esercito", 0);
-            addInfluenza("Occulto", 0);
-            addInfluenza("Sopravvivenza", 0);
+            addDisciplina(new Disciplina.Auspex());
+            addDisciplina(new Disciplina.Robustezza());
+            addDisciplina(new Disciplina.Valeren());
+            addInfluenza(new Influenza("Esercito"));
+            addInfluenza(new Influenza("Occulto"));
+            addInfluenza(new Influenza("Sopravvivenza"));
         }
 
         @Override
@@ -256,12 +249,12 @@ public final class Clan {
     public static class SetFollower extends Vampire{
         public SetFollower(){
             super();
-            addDisciplina("Ascendente", 0);
-            addDisciplina("Oscurazione", 0);
-            addDisciplina("Serpentis", 0);
-            addInfluenza("Alta società", 0);
-            addInfluenza("Clero", 0);
-            addInfluenza("Crimine", 0);
+            addDisciplina(new Disciplina.Ascendente());
+            addDisciplina(new Disciplina.Oscurazione());
+            addDisciplina(new Disciplina.Serpentis());
+            addInfluenza(new Influenza("Alta società"));
+            addInfluenza(new Influenza("Clero"));
+            addInfluenza(new Influenza("Crimine"));
         }
 
         @Override
@@ -273,12 +266,12 @@ public final class Clan {
     public static class LightSerpent extends Vampire{
         public LightSerpent(){
             super();
-            addDisciplina("Ascendente", 0);
-            addDisciplina("Oscurazione", 0);
-            addDisciplina("Serpentis", 0);
-            addInfluenza("Crimine", 0);
-            addInfluenza("Occulto", 0);
-            addInfluenza("Sopravvivenza", 0);
+            addDisciplina(new Disciplina.Ascendente());
+            addDisciplina(new Disciplina.Oscurazione());
+            addDisciplina(new Disciplina.Serpentis());
+            addInfluenza(new Influenza("Crimine"));
+            addInfluenza(new Influenza("Occulto"));
+            addInfluenza(new Influenza("Sopravvivenza"));
         }
 
         @Override
@@ -290,12 +283,12 @@ public final class Clan {
     public static class Toreador extends Vampire{
         public Toreador(){
             super();
-            addDisciplina("Ascendente", 0);
-            addDisciplina("Auspex", 0);
-            addDisciplina("Velocità", 0);
-            addInfluenza("Accademiche", 0);
-            addInfluenza("Alta società", 0);
-            addInfluenza("Media", 0);
+            addDisciplina(new Disciplina.Ascendente());
+            addDisciplina(new Disciplina.Auspex());
+            addDisciplina(new Disciplina.Velocità());
+            addInfluenza(new Influenza("Accademiche"));
+            addInfluenza(new Influenza("Alta società"));
+            addInfluenza(new Influenza("Media"));
         }
 
         @Override
@@ -307,12 +300,12 @@ public final class Clan {
     public static class Tremere extends Vampire{
         public Tremere(){
             super();
-            addDisciplina("Auspex", 0);
-            addDisciplina("Dominazione", 0);
-            addDisciplina("Taumaturgia", 0);
-            addInfluenza("Accademiche", 0);
-            addInfluenza("Alta società", 0);
-            addInfluenza("Occulto", 0);
+            addDisciplina(new Disciplina.Auspex());
+            addDisciplina(new Disciplina.Dominazione());
+            addDisciplina(new Disciplina.Taumaturgia());
+            addInfluenza(new Influenza("Accademiche"));
+            addInfluenza(new Influenza("Alta società"));
+            addInfluenza(new Influenza("Occulto"));
         }
 
         @Override
@@ -324,12 +317,12 @@ public final class Clan {
     public static class Tzimisce extends Vampire{
         public Tzimisce(){
             super();
-            addDisciplina("Animalità", 0);
-            addDisciplina("Auspex", 0);
-            addDisciplina("Vicissitudine", 0);
-            addInfluenza("Accademiche", 0);
-            addInfluenza("Medicine", 0);
-            addInfluenza("Occulto", 0);
+            addDisciplina(new Disciplina.Animalità());
+            addDisciplina(new Disciplina.Auspex());
+            addDisciplina(new Disciplina.Vicissitudine());
+            addInfluenza(new Influenza("Accademiche"));
+            addInfluenza(new Influenza("Medicine"));
+            addInfluenza(new Influenza("Occulto"));
         }
 
         @Override
@@ -341,12 +334,12 @@ public final class Clan {
     public static class Ventrue extends Vampire{
         public Ventrue(){
             super();
-            addDisciplina("Ascendente", 0);
-            addDisciplina("Dominazione", 0);
-            addDisciplina("Robustezza", 0);
-            addInfluenza("Esercito", 0);
-            addInfluenza("Politica", 0);
-            addInfluenza("Risorse", 0);
+            addDisciplina(new Disciplina.Ascendente());
+            addDisciplina(new Disciplina.Dominazione());
+            addDisciplina(new Disciplina.Robustezza());
+            addInfluenza(new Influenza("Esercito"));
+            addInfluenza(new Influenza("Politica"));
+            addInfluenza(new Influenza("Risorse"));
         }
 
         @Override
