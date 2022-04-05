@@ -15,6 +15,7 @@ public abstract class Character{
 
     protected HashSet<Disciplina> setDiscipline = new HashSet<Disciplina>();
     protected HashSet<Influenza> setInfluenze = new HashSet<Influenza>();
+    protected HashSet<Style> setStili = new HashSet<Style>();
     //pregi
     //stili
 
@@ -88,12 +89,20 @@ public abstract class Character{
         setInfluenze.add(i);
     }
 
+    public void addStile(Style s){
+        setStili.add(s);
+    }
+
     public Iterator<Disciplina> discIterator(){
         return setDiscipline.iterator();
     }
 
     public Iterator<Influenza> inflIterator(){
         return setInfluenze.iterator();
+    }
+
+    public Iterator<Style> sIterator(){
+        return setStili.iterator();
     }
 
     public Disciplina searchDisc(String nome){
@@ -158,6 +167,22 @@ public abstract class Character{
             if(vici == 1) vici = 0;
         }
         return robu+vici;
+    }
+
+    public void removeDisc(Disciplina d){
+        if(d instanceof DisciplinaNoClan){
+            setDiscipline.remove(d);
+        }
+    }
+
+    public void removeInfl(Influenza i){
+        if(i instanceof InfluenzaNoClan){
+            setInfluenze.remove(i);
+        }
+    }
+
+    public void removeStil(Style s){
+        setStili.remove(s);
     }
 
     public abstract int getWill();
