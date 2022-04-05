@@ -13,7 +13,7 @@ public abstract class Disciplina implements Skill{
     private boolean clan;
     private boolean pander;
 
-    public static record Power(String nome, int livello, String costo, String test, String raggio,String durata, String limite){}
+    public static record Power(String nome, int livello){}
 
     private ArrayList<Power> listaPoteri;
 
@@ -112,7 +112,14 @@ public abstract class Disciplina implements Skill{
 
         public Animalità(boolean pander) {
             super("Animalità", pander);
-            addPotere(new Power("Sussurri ferini", 1, "1/0W", "Test", "Dirette vicinanze", "Colloquio", "1 volta a scena"));
+            addPotere(new Power("Sussurri Ferini", 1));
+            addPotere(new Power("Richiamo", 2));
+            addPotere(new Power("Domare la Bestia", 3));
+            addPotere(new Power("Cammino Bestiale", 3));
+            addPotere(new Power("Comunione di Spiriti", 4));
+            addPotere(new Power("Piaga d'Egitto", 4));
+            addPotere(new Power("Estirpare la Bestia", 5));
+            addPotere(new Power("Assalto Bestiale", 5));
         }
         
     }
@@ -124,7 +131,12 @@ public abstract class Disciplina implements Skill{
 
         public Ascendente(boolean pander) {
             super("Ascendente", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Magnetismo", 1));
+            addPotere(new Power("Sguardo Terrificante", 2));
+            addPotere(new Power("Incanto", 3));
+            addPotere(new Power("Convocazione", 4));
+            addPotere(new Power("Capriccio di Edone'", 4));
+            addPotere(new Power("Maestà", 5));
         }
     }
 
@@ -135,7 +147,11 @@ public abstract class Disciplina implements Skill{
 
         public Auspex(boolean pander) {
             super("Ascendente", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Sensi Acuti", 1));
+            addPotere(new Power("Percepire l'aura", 2));
+            addPotere(new Power("Tocco dello Spirito", 3));
+            addPotere(new Power("Telepatia", 4));
+            addPotere(new Power("Viaggio Astrale", 5));
         }
     }
 
@@ -146,7 +162,14 @@ public abstract class Disciplina implements Skill{
 
         public Chimerismo(boolean pander) {
             super("Chimerismo", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Fuoco Fatuo", 1));
+            addPotere(new Power("Fata Morgana", 2));
+            addPotere(new Power("Oro degli Occhi", 2));
+            addPotere(new Power("Apparizione", 3));
+            addPotere(new Power("Intelligenza Artefatta", 3));
+            addPotere(new Power("Permanenza", 4));
+            addPotere(new Power("Orrida Realtà", 5));
+            addPotere(new Power("Fata Amria", 5));
         }
     }
 
@@ -157,7 +180,11 @@ public abstract class Disciplina implements Skill{
 
         public Daimonion(boolean pander) {
             super("Daimonion", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Assaporare il Peccato", 1));
+            addPotere(new Power("Terrore Abissale", 2));
+            addPotere(new Power("Conflagrazione Infernale", 3));
+            addPotere(new Power("Psychomachia", 4));
+            addPotere(new Power("Servitore delle Tenebre", 5));
         }
     }
 
@@ -168,7 +195,13 @@ public abstract class Disciplina implements Skill{
 
         public Demenza(boolean pander) {
             super("Demenza", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Passione", 1));
+            addPotere(new Power("Delirium", 1));
+            addPotere(new Power("Ossessione", 2));
+            addPotere(new Power("Occhi del Caos", 3));
+            addPotere(new Power("Stretta del Dannato", 3));
+            addPotere(new Power("Voce della Follia", 4));
+            addPotere(new Power("Isteria di Massa", 5));
         }
     }
 
@@ -179,7 +212,13 @@ public abstract class Disciplina implements Skill{
 
         public Dominazione(boolean pander) {
             super("Dominazione", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Comando Semplice", 1));
+            addPotere(new Power("Mesmerizzare", 2));
+            addPotere(new Power("Calma Apparente", 3));
+            addPotere(new Power("Oblio della Mente", 3));
+            addPotere(new Power("Coercizione", 4));
+            addPotere(new Power("Tabù", 4));
+            addPotere(new Power("Possessione", 5));
         }
     }
 
@@ -190,7 +229,15 @@ public abstract class Disciplina implements Skill{
 
         public Necromanzia(boolean pander) {
             super("Necromanzia", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Visione del Velo", 1));
+            addPotere(new Power("Testimonianza Postuma", 1));
+            addPotere(new Power("Lingue dei Defunti", 2));
+            addPotere(new Power("Morti Inquieti", 3));
+            addPotere(new Power("Servo Spettrale", 3));
+            addPotere(new Power("Infestazione", 4));
+            addPotere(new Power("Orda Barcollante", 4));
+            addPotere(new Power("Ex Nihilo", 4));
+            addPotere(new Power("Maestria del Sudario", 5));
         }
     }
 
@@ -201,7 +248,14 @@ public abstract class Disciplina implements Skill{
 
         public Oscurazione(boolean pander) {
             super("Oscurazione", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Ammantarsi", 1));
+            addPotere(new Power("Tocco Svanitore", 1));
+            addPotere(new Power("Presenza Invisibile", 2));
+            addPotere(new Power("Maschera dei Mille Volti", 3));
+            addPotere(new Power("fantasma nel Sistema", 3));
+            addPotere(new Power("Svanire", 4));
+            addPotere(new Power("Ammantare le Moltitudini", 5));
+            addPotere(new Power("Dono della Maschera", 5));
         }
     }
 
@@ -212,7 +266,11 @@ public abstract class Disciplina implements Skill{
 
         public Ottenebramento(boolean pander) {
             super("Ottenebramento", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Gioco d'Ombra", 1));
+            addPotere(new Power("Sudario d'Ombra", 2));
+            addPotere(new Power("Braccia dell'Abisso", 3));
+            addPotere(new Power("Metamorfosi Oscura", 4));
+            addPotere(new Power("Divenire Ombra", 5));
         }
     }
 
@@ -223,7 +281,11 @@ public abstract class Disciplina implements Skill{
 
         public Potenza(boolean pander) {
             super("Potenza", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Forza Sovraumana", 1));
+            addPotere(new Power("Veemenza", 2));
+            addPotere(new Power("Brutalità", 3));
+            addPotere(new Power("Impatto", 4));
+            addPotere(new Power("Rovina di Babele", 5));
         }
     }
 
@@ -234,7 +296,13 @@ public abstract class Disciplina implements Skill{
 
         public Proteide(boolean pander) {
             super("Proteide", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Sensi della Bestia", 1));
+            addPotere(new Power("Artigli della Bestia", 2));
+            addPotere(new Power("Fondersi con la Terra", 3));
+            addPotere(new Power("Cuor di leone", 3));
+            addPotere(new Power("Trasmutazione", 4));
+            addPotere(new Power("Forma di Nebbia", 5));
+            addPotere(new Power("Carne di Pietra", 5));
         }
     }
 
@@ -245,7 +313,14 @@ public abstract class Disciplina implements Skill{
 
         public Quietus(boolean pander) {
             super("Quietus", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Silenzio di Morte", 1));
+            addPotere(new Power("Veleno dello Scorpione", 2));
+            addPotere(new Power("Risveglio della Lama", 2));
+            addPotere(new Power("Richiamo di Dagon", 3));
+            addPotere(new Power("Sudori Freddi", 3));
+            addPotere(new Power("Carezza di Baal", 4));
+            addPotere(new Power("Sapore di Morte", 5));
+            addPotere(new Power("Fragranza Letale", 5));
         }
     }
 
@@ -256,7 +331,11 @@ public abstract class Disciplina implements Skill{
 
         public Robustezza(boolean pander) {
             super("Robustezza", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Fermezza", 1));
+            addPotere(new Power("Vigore", 2));
+            addPotere(new Power("Corazza naturale", 3));
+            addPotere(new Power("Negare il Flagello", 4));
+            addPotere(new Power("Corpo Immortale", 5));
         }
     }
 
@@ -267,7 +346,11 @@ public abstract class Disciplina implements Skill{
 
         public Sanguinis(boolean pander) {
             super("Sanguinis", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Comunione di Sangue", 1));
+            addPotere(new Power("Piovra", 2));
+            addPotere(new Power("Gestalt", 3));
+            addPotere(new Power("Sentiero di Caino", 4));
+            addPotere(new Power("Entità Coagulata", 5));
         }
     }
 
@@ -278,7 +361,13 @@ public abstract class Disciplina implements Skill{
 
         public Serpentis(boolean pander) {
             super("Serpentis", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Sguardo Incantatore", 1));
+            addPotere(new Power("Lingua della Serpe", 2));
+            addPotere(new Power("Pelle della Vipera", 3));
+            addPotere(new Power("Mummificazione", 3));
+            addPotere(new Power("Forma del Cobra", 4));
+            addPotere(new Power("Simulacro della Bestia Tifonica", 4));
+            addPotere(new Power("Estrarre il Cuore", 5));
         }
     }
 
@@ -289,7 +378,12 @@ public abstract class Disciplina implements Skill{
 
         public Taumaturgia(boolean pander) {
             super("Taumaturgia del Sangue", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Assaggio del Sangue", 1));
+            addPotere(new Power("Furia del Sangue", 2));
+            addPotere(new Power("Vigore del Sangue", 3));
+            addPotere(new Power("Frusta di Sangue", 3));
+            addPotere(new Power("Furto di Vitae", 4));
+            addPotere(new Power("Calderone di Sangue", 5));
         }
     }
 
@@ -300,7 +394,13 @@ public abstract class Disciplina implements Skill{
 
         public Valeren(boolean pander) {
             super("Valeren", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Percezione Vitale", 1));
+            addPotere(new Power("Sentinella Eterna", 1));
+            addPotere(new Power("Tocco Anestetico", 2));
+            addPotere(new Power("Preveggenza", 2));
+            addPotere(new Power("Tocco Ardente", 3));
+            addPotere(new Power("Armatura della furia di Cai-", 4));
+            addPotere(new Power("Vendetta di Samiel", 5));
         }
     }
 
@@ -311,7 +411,11 @@ public abstract class Disciplina implements Skill{
 
         public Velocità(boolean pander) {
             super("Velocità", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Riflessi", 1));
+            addPotere(new Power("Destrezza", 2));
+            addPotere(new Power("Rapidità", 3));
+            addPotere(new Power("Dinamismo", 4));
+            addPotere(new Power("Accelerazione", 5));
         }
     }
     
@@ -322,7 +426,13 @@ public abstract class Disciplina implements Skill{
 
         public Vicissitudine(boolean pander) {
             super("Vicissitudine", pander);
-            addPotere(new Power("", 1, "", "Test", "", "", ""));
+            addPotere(new Power("Volto Malleabile", 1));
+            addPotere(new Power("Scultura della Carne", 2));
+            addPotere(new Power("Scultura delle Ossa", 3));
+            addPotere(new Power("Arto Fantasma", 3));
+            addPotere(new Power("Forma Terrificante", 4));
+            addPotere(new Power("Corpo di Sangue", 5));
+            addPotere(new Power("Predatore Chirotteriforme", 5));
         }
     }
 }
