@@ -23,6 +23,7 @@ public abstract class Disciplina implements Skill{
         firstFree = false;
         clan = true;
         this.pander = pander;
+        listaPoteri = new ArrayList<Power>();
     }
 
     public Disciplina(String name){
