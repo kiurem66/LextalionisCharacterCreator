@@ -189,14 +189,14 @@ public final class Clan {
     public static class Pander extends Vampire{
         public Pander(){
             super();
-            addDisciplina(new Disciplina.Animalità());
-            addDisciplina(new Disciplina.Ascendente());
-            addDisciplina(new Disciplina.Auspex());
-            addDisciplina(new Disciplina.Dominazione());
-            addDisciplina(new Disciplina.Oscurazione());
-            addDisciplina(new Disciplina.Potenza());
-            addDisciplina(new Disciplina.Robustezza());
-            addDisciplina(new Disciplina.Velocità());
+            addDisciplina(new Disciplina.Animalità(true));
+            addDisciplina(new Disciplina.Ascendente(true));
+            addDisciplina(new Disciplina.Auspex(true));
+            addDisciplina(new Disciplina.Dominazione(true));
+            addDisciplina(new Disciplina.Oscurazione(true));
+            addDisciplina(new Disciplina.Potenza(true));
+            addDisciplina(new Disciplina.Robustezza(true));
+            addDisciplina(new Disciplina.Velocità(true));
             addInfluenza(new Influenza("Sopravvivenza"));
         }
 
