@@ -1,4 +1,4 @@
-public class Vampire extends Character{
+public abstract class Vampire extends Character{
 
     int gen;
 

@@ -10,6 +10,11 @@ public class RevenantClan {
             addInfluenza("Sopravvivenza", 0);
             addInfluenza("Medicina", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Bratovich";
+        }
     }
 
     public static class Grimaldi extends Ghoul{
@@ -20,6 +25,11 @@ public class RevenantClan {
             addDisciplina("Vicissitudine", 0);
             addInfluenza("Sopravvivenza", 0);
             addInfluenza("Velocità", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Grimaldi";
         }
     }
 
@@ -32,6 +42,11 @@ public class RevenantClan {
             addInfluenza("Accademiche", 0);
             addInfluenza("Occulto", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Obertus";
+        }
     }
 
     public static class Zantosa extends Ghoul{
@@ -42,6 +57,11 @@ public class RevenantClan {
             addDisciplina("Vicissitudine", 0);
             addInfluenza("Alta società", 0);
             addInfluenza("Risorse", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Zantosa";
         }
     }
 }

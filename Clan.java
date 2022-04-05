@@ -12,6 +12,11 @@ public final class Clan {
             addInfluenza("Sicurezza", 0);
             addInfluenza("Sopravvivenza", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Assamita";
+        }
     }
 
     public static class Baali extends Vampire{
@@ -23,6 +28,11 @@ public final class Clan {
             addInfluenza("Accademiche", 0);
             addInfluenza("Occulto", 0);
             addInfluenza("Sopravvivenza", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Baali";
         }
     }
 
@@ -36,6 +46,11 @@ public final class Clan {
             addInfluenza("Politica", 0);
             addInfluenza("Sopravvivenza", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Brujah AT";
+        }
     }
 
     public static class CountryGangrel extends Vampire{
@@ -48,6 +63,11 @@ public final class Clan {
             addInfluenza("Sicurezza", 0);
             addInfluenza("Sopravvivenza", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Gangrel \'di Campagna\'";
+        }
     }
 
     public static class CityGangrel extends Vampire{
@@ -59,6 +79,11 @@ public final class Clan {
             addInfluenza("Crimine", 0);
             addInfluenza("Media", 0);
             addInfluenza("Medicina", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Gangrel \'di Città\'";
         }
     }
 
@@ -86,6 +111,11 @@ public final class Clan {
             int base = super.getWill();
             return base + number;
         }
+
+        @Override
+        public String getClan() {
+            return "Gemelli di Sangue";
+        }
     }
 
     public static class Giovanni extends Vampire{
@@ -97,6 +127,11 @@ public final class Clan {
             addInfluenza("Medicina", 0);
             addInfluenza("Occulto", 0);
             addInfluenza("Risorse", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Giovanni";
         }
     }
 
@@ -110,6 +145,11 @@ public final class Clan {
             addInfluenza("Politica", 0);
             addInfluenza("Mentore", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Lasombra";
+        }
     }
 
     public static class Malkavian extends Vampire{
@@ -122,6 +162,11 @@ public final class Clan {
             addInfluenza("Media", 0);
             addInfluenza("Medicina", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Malkavian AT";
+        }
     }
 
     public static class Nosferatu extends Vampire{
@@ -133,6 +178,11 @@ public final class Clan {
             addInfluenza("Media", 0);
             addInfluenza("Sopravvivenza", 0);
             addInfluenza("Sicurezza", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Nosferatu AT";
         }
     }
 
@@ -161,6 +211,11 @@ public final class Clan {
         public boolean toChoosInfl() {
             return true;
         }
+
+        @Override
+        public String getClan() {
+            return "Pander";
+        }
     }
 
     public static class Ravnos extends Vampire{
@@ -174,6 +229,11 @@ public final class Clan {
             addInfluenza("Occulto", 0);
             addInfluenza("Sopravvivenza", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Ravnos AT";
+        }
     }
 
     public static class Salubre extends Vampire{
@@ -185,6 +245,11 @@ public final class Clan {
             addInfluenza("Esercito", 0);
             addInfluenza("Occulto", 0);
             addInfluenza("Sopravvivenza", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Salubre AT";
         }
     }
 
@@ -198,6 +263,11 @@ public final class Clan {
             addInfluenza("Clero", 0);
             addInfluenza("Crimine", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Seguace del Set";
+        }
     }
 
     public static class LightSerpent extends Vampire{
@@ -205,10 +275,15 @@ public final class Clan {
             super();
             addDisciplina("Ascendente", 0);
             addDisciplina("Oscurazione", 0);
-            addDisciplina("Potenza", 0);
+            addDisciplina("Serpentis", 0);
             addInfluenza("Crimine", 0);
             addInfluenza("Occulto", 0);
             addInfluenza("Sopravvivenza", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Serpente della Luce";
         }
     }
 
@@ -222,6 +297,11 @@ public final class Clan {
             addInfluenza("Alta società", 0);
             addInfluenza("Media", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Toreador AT";
+        }
     }
 
     public static class Tremere extends Vampire{
@@ -233,6 +313,11 @@ public final class Clan {
             addInfluenza("Accademiche", 0);
             addInfluenza("Alta società", 0);
             addInfluenza("Occulto", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Tremere AT";
         }
     }
 
@@ -246,6 +331,11 @@ public final class Clan {
             addInfluenza("Medicine", 0);
             addInfluenza("Occulto", 0);
         }
+
+        @Override
+        public String getClan() {
+            return "Tzimisce";
+        }
     }
 
     public static class Ventrue extends Vampire{
@@ -257,6 +347,11 @@ public final class Clan {
             addInfluenza("Esercito", 0);
             addInfluenza("Politica", 0);
             addInfluenza("Risorse", 0);
+        }
+
+        @Override
+        public String getClan() {
+            return "Ventrue AT";
         }
     }
 

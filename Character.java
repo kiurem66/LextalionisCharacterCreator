@@ -163,4 +163,6 @@ public abstract class Character{
     public abstract int getWill();
 
     public abstract boolean toChoosInfl();
+
+    public abstract String getClan();
 }

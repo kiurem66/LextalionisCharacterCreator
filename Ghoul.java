@@ -16,4 +16,8 @@ public class Ghoul extends Character{
         return true;
     }
     
+    @Override
+    public String getClan() {
+        return "Ghoul";
+    }
 }
