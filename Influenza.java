@@ -5,10 +5,12 @@
 public class Influenza implements Skill{
     private String name;
     private int level;
+    private boolean firstFree;
 
     public Influenza(String name){
         this.name = name;
         this.level = 0;
+        firstFree = false;
     }
 
     @Override
@@ -41,5 +43,14 @@ public class Influenza implements Skill{
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+    @Override
+    public boolean isFirstLevelFree() {
+        return firstFree;
+    }
+
+    public void setFirstLevelFree(boolean firstFree) {
+        this.firstFree = firstFree;
     }
 }

@@ -43,6 +43,7 @@ public interface Skill {
     default int costCalc(){
         int cost = 0;
         for(int i=1; i<=getLevel(); i++){
+            if(i==1 && isFirstLevelFree()) continue;
             cost += i*getBaseCost();
         }
         return cost;
@@ -51,4 +52,8 @@ public interface Skill {
     default void incrLevel(){
         setLevel(getLevel()+1);
     }
+
+    public boolean isFirstLevelFree();
+
+    public void setFirstLevelFree(boolean free);
 }

@@ -66,13 +66,13 @@ public abstract class Character{
     }
 
     public void addDisciplina(String nome, int level){
-        Disciplina d = new Disciplina(name);
+        Disciplina d = new Disciplina(nome);
         d.setLevel(level);
         setDiscipline.add(d);
     }
 
     public void addDisciplinaNoClan(String nome, int level){
-        Disciplina d = new DisciplinaNoClan(name);
+        Disciplina d = new DisciplinaNoClan(nome);
         d.setLevel(level);
         setDiscipline.add(d);
     }

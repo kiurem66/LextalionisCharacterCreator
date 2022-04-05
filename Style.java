@@ -27,6 +27,14 @@ public abstract class Style implements Skill{
     }
 
     @Override
+    public boolean isFirstLevelFree() {
+        return false;
+    }
+
+    @Override
+    public void setFirstLevelFree(boolean free) {}
+
+    @Override
     public boolean equals(Object obj) {
         if(!(obj instanceof Style)) return false;
         return ((Style)obj).getName().equals(getName());

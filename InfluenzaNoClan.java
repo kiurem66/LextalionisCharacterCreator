@@ -4,14 +4,9 @@ public class InfluenzaNoClan extends Influenza{
         super(name);
     }
 
-    public int getBaseCost(){
-        return 4;
-    }
-
     public int costCalc(){
-        if(getLevel() == 0) return 0;
-        Influenza i = new Influenza("");
-        i.setLevel(getLevel());
-        return i.costCalc()+1;
+        int i = super.costCalc();
+        if(i == 0) return 0;
+        return i+1;
     }
 }
