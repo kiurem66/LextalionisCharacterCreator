@@ -1,6 +1,6 @@
-public class DiscplinaPander extends Disciplina{
+public class DisciplinaPander extends Disciplina{
     
-    public DiscplinaPander(String name) {
+    public DisciplinaPander(String name) {
         super(name);
     }
 
