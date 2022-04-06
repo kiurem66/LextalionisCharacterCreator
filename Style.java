@@ -1,5 +1,8 @@
-public abstract class Style implements Skill{
-    protected int level;
+import java.util.Iterator;
+
+public abstract class Style implements Skill, Iterable<String>{
+    private int level;
+    private String nomi[] = new String[3];
 
     @Override
     public int getLevel() {
@@ -38,11 +41,37 @@ public abstract class Style implements Skill{
     public boolean equals(Object obj) {
         if(!(obj instanceof Style)) return false;
         return ((Style)obj).getName().equals(getName());
+    
+    }
+
+    public Iterator<String> iterator(){
+        return new Iterator<String>() {
+            private int i=0;
+            @Override
+            public boolean hasNext() {
+                if(i>=3) return false;
+                if(i >= level) return false;
+                return true;
+            }
+
+            @Override
+            public String next() {
+                return nomi[i++];
+            }
+            
+        };
+    }
+
+    public void setName(String n, int i){
+        nomi[i] = n;
     }
     
     public static class Coltelli extends Style{
         public Coltelli(){
-            level = 1;
+            setLevel(1);
+            setName("Benvenuto del Brigante", 0);
+            setName("Tagliagole", 1);
+            setName("Signore dei Pugnali", 2);
         }
         
         @Override
@@ -53,7 +82,10 @@ public abstract class Style implements Skill{
 
     public static class Duellista extends Style{
         public Duellista(){
-            level = 1;
+            setLevel(1);
+            setName("Guardia", 0);
+            setName("Cappa e Spada", 1);
+            setName("Colpo da Maestro", 2);
         }
         
         @Override
@@ -64,7 +96,9 @@ public abstract class Style implements Skill{
 
     public static class Lancio extends Style{
         public Lancio(){
-            level = 1;
+            setName("Sibilo Mortale", 0);
+            setName("Questione di Riflessi", 1);
+            setName("Ninjutsu", 2);
         }
         
         @Override
@@ -75,7 +109,10 @@ public abstract class Style implements Skill{
 
     public static class Desperado extends Style{
         public Desperado(){
-            level = 1;
+            setLevel(1);
+            setName("Estrazione rapida", 0);
+            setName("Bang Bang Bang", 1);
+            setName("Gun Fighter", 2);
         }
         
         @Override
@@ -86,7 +123,10 @@ public abstract class Style implements Skill{
 
     public static class Cinematografico extends Style{
         public Cinematografico(){
-            level = 1;
+            setLevel(1);
+            setName("Carambola", 0);
+            setName("Colpo di Fortuna", 1);
+            setName("Bullet Time", 2);
         }
         
         @Override
@@ -97,7 +137,10 @@ public abstract class Style implements Skill{
 
     public static class Marziali extends Style{
         public Marziali(){
-            level = 1;
+            setLevel(1);
+            setName("Sbilanciare", 0);
+            setName("Disarmare", 1);
+            setName("Contromossa", 2);
         }
         
         @Override
@@ -108,7 +151,10 @@ public abstract class Style implements Skill{
 
     public static class Acrobatico extends Style{
         public Acrobatico(){
-            level = 1;
+            setLevel(1);
+            setName("Atleta", 0);
+            setName("Parkour", 1);
+            setName("Wardancer", 2);
         }
         
         @Override
@@ -119,7 +165,10 @@ public abstract class Style implements Skill{
 
     public static class Sporco extends Style{
         public Sporco(){
-            level = 1;
+            setLevel(1);
+            setName("Fumo negli Occhi", 0);
+            setName("Bottigliata", 1);
+            setName("Scudo Umano", 2);
         }
         
         @Override
@@ -130,7 +179,10 @@ public abstract class Style implements Skill{
 
     public static class Libre extends Style{
         public Libre(){
-            level = 1;
+            setLevel(1);
+            setName("Bruiser Special", 0);
+            setName("Spezzaschiena", 1);
+            setName("Sottomissione", 2);
         }
         
         @Override
@@ -141,7 +193,10 @@ public abstract class Style implements Skill{
 
     public static class Strada extends Style{
         public Strada(){
-            level = 1;
+            setLevel(1);
+            setName("Stile del Carcerato", 0);
+            setName("Uno Due", 1);
+            setName("Timbratura", 2);
         }
         
         @Override
