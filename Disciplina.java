@@ -6,7 +6,7 @@ import java.util.NoSuchElementException;
  * Tipo mutabile che implementa Skill
  * Rappresenta una disciplina di un personaggio
  */
-public abstract class Disciplina implements Skill{
+public abstract class Disciplina implements Skill, Iterable<Disciplina.Power>{
     private String name;
     private int level;
     private boolean firstFree;
