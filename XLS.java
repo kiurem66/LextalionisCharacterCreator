@@ -39,7 +39,6 @@ public class XLS {
         writeProCon(sheet, character.pIterator());
         writeDisciplines(sheet, character.discIterator());
 
-        //ArrayList<Integer> DisciplineStartIndexees = new ArrayList<Integer>();
         FileOutputStream fileOut = new FileOutputStream(path); 
         wb.write(fileOut);
         fileOut.close();
@@ -132,36 +131,4 @@ public class XLS {
             }
         }
     }
-
-    public static void main(String[] args) throws IOException{
-        Character c = new Clan.Ventrue();
-        c.setPx(100);
-        c.setName("Giorgio");
-        c.setFazione("Stronzi");
-        c.setSentiero("Faccio il cazzo che voglio");
-        Style s = new Style.Acrobatico();
-        s.setLevel(3);
-        c.addStile(s);
-        s = new Style.Cinematografico();
-        s.setLevel(2);
-        c.addStile(s);
-
-        c.searchInfl("Esercito").setLevel(1);
-        c.addInfluenza(new Influenza("Pollo"));
-        c.searchInfl("Pollo").setLevel(4);
-        c.addProCon(new ProCon("Pirla", -3));
-        c.addProCon(new ProCon("Test", 3));
-        c.addProCon(new ProCon("Ti incula", 3));
-
-        c.searchDisc("Ascendente").setLevel(5);
-        c.searchDisc("Dominazione").setLevel(5);
-        c.addDisciplina(new Disciplina.Necromanzia());
-        c.searchDisc("Necromanzia").setLevel(5);
-        c.addDisciplina(new Disciplina.Demenza());
-        c.searchDisc("Demenza").setLevel(5);
-
-        XLS.export(c, "media/new.xlsx");
-    }
-
-    
 }
