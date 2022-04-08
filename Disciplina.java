@@ -13,7 +13,23 @@ public abstract class Disciplina implements Skill, Iterable<Disciplina.Power>{
     private boolean clan;
     private boolean pander;
 
-    public static record Power(String nome, int livello){}
+    public static class Power{
+        private String nome;
+        private int livello;
+
+        public Power(String nome, int livello){
+            this.nome = nome;
+            this.livello = livello;
+        }
+
+        public String nome() {
+            return nome;
+        }
+
+        public int livello() {
+            return livello;
+        }
+    }
 
     private ArrayList<Power> listaPoteri;
 
