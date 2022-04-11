@@ -171,7 +171,7 @@ public abstract class Character{
         }
         int vici = 0;
         if(isInDisc("Vicissitudine")){
-            vici = searchDisc("Vicissitudine").getLevel();
+            vici = searchDisc("Vicissitudine").getLevel()*2;
             if(vici == 1) vici = 0;
         }
         return robu+vici;
