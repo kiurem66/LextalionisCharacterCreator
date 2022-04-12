@@ -71,6 +71,10 @@ public class Gui {
     }
 
     void save(){
+        if(character.getRemainingPx() < 0){
+            JOptionPane.showMessageDialog(window, "I px sono minori di 0, rinuncia a qualche abilità prima di salvare la scheda");
+            return;
+        }
         if(filepath == null){
             saveName();
             return;
@@ -84,6 +88,10 @@ public class Gui {
     }
 
     void saveName(){
+        if(character.getRemainingPx() < 0){
+            JOptionPane.showMessageDialog(window, "I px sono minori di 0, rinuncia a qualche abilità prima di salvare la scheda");
+            return;
+        }
         try{
             JFileChooser jf = new JFileChooser();
             jf.addChoosableFileFilter(new FileFilter() {
