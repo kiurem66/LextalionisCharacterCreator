@@ -113,6 +113,15 @@ public abstract class Character{
         throw new NoSuchElementException("Pregio/difetto non presente");
     }
 
+    public Style searchStyle(String nome){
+        for(Style s: setStili){
+            if(s.getName().equals(nome)){
+                return s;
+            }
+        }
+        throw new NoSuchElementException("Pregio/difetto non presente");
+    }
+
     public boolean isInDisc(String nome){
         for (Disciplina d : setDiscipline) {
             if(d.getName().equals(nome)) return true;

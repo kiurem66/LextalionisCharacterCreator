@@ -28,18 +28,23 @@ public class Gui {
     JPanel discPanel;
     JPanel inflPanel;
     JPanel proConPanel;
+    JPanel stylePanel;
 
 
     private class SkillElement extends JPanel {   
         private JSpinner spinner;
         private JLabel label;
         private boolean disc;
+        private boolean style;
 
         public SkillElement(Skill s, boolean clan){
             super(new GridLayout(1,3));
             disc = false;
             if(s instanceof Disciplina)
                 disc = true;
+            style = false;
+            if(s instanceof Style)
+                style = true;
             JPanel wrap = new JPanel();
             super.add(wrap);
             if(!clan){
@@ -49,6 +54,7 @@ public class Gui {
                         delete();
                         updateDisciplines();
                         updateInfluencies();
+                        updateStyles();
                         updateBloodWillPx();
                     }
                 });
@@ -72,6 +78,8 @@ public class Gui {
             label = new JLabel(s.getName(), SwingConstants.LEFT);
             super.add(label);
             SpinnerModel model = new SpinnerNumberModel(s.getLevel(), 0, 5, 1);     
+            if(style)
+                model = new SpinnerNumberModel(s.getLevel(), 0, 3, 1);  
             spinner = new JSpinner(model);
             spinner.addChangeListener(new ChangeListener() {
                 public void stateChanged(ChangeEvent e){
@@ -87,6 +95,8 @@ public class Gui {
             Skill s = null;
             if(disc){
                 s = character.searchDisc(label.getText());
+            }else if(style){
+                s = character.searchStyle(label.getText());
             }else{
                 s = character.searchInfl(label.getText());
             }
@@ -97,11 +107,14 @@ public class Gui {
         void delete(){
             if(disc){
                 character.removeDisc(character.searchDisc(label.getText()));
+            }else if(style){
+                character.removeStil(character.searchStyle(label.getText()));
             }else{
                 character.removeInfl(character.searchInfl(label.getText()));
             }
             updateDisciplines();
             updateInfluencies();
+            updateStyles();
         }
     }
 
@@ -121,8 +134,6 @@ public class Gui {
             remove.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e){
                     delete();
-                    updateDisciplines();
-                    updateInfluencies();
                     updateBloodWillPx();
                 }
             });
@@ -186,8 +197,8 @@ public class Gui {
     }
 
     Influenza selectInfl(boolean clan){
-        String[] list = {"Accademiche", "Alta Società", "Clero", "Crimine", "Esercito"
-        ,               "Ghoul", "Medicina", "Media", "Mentore", "Occulto", "Politica",
+        String[] list = {"Accademiche", "Alta Società", "Clero", "Crimine", "Esercito",
+                        "Ghoul", "Medicina", "Media", "Mentore", "Occulto", "Politica",
                         "Risorse", "Sicurezza", "Sopravvivenza"};
         JComboBox<String> jComboBox = new JComboBox<String>(list);
         JOptionPane.showMessageDialog(window, jComboBox, "Seleziona Disciplina", JOptionPane.QUESTION_MESSAGE);
@@ -195,6 +206,27 @@ public class Gui {
         Influenza i = new Influenza(sel);
         i.setClan(clan);
         return i;
+    }
+
+    Style selectStyle(){
+        String[] list = {"Coltelli", "Duellista", "Armi da Lancio", "Desperado", "Stile Cinematografico"
+                        ,"Arti Marziali", "Combattimento Acrobatico", "Gioco Sporco", "Rissa da Strda"};
+        JComboBox<String> jComboBox = new JComboBox<String>(list);
+        JOptionPane.showMessageDialog(window, jComboBox, "Seleziona Disciplina", JOptionPane.QUESTION_MESSAGE);
+        String sel = (String)(jComboBox.getSelectedItem());
+        Style s = null;
+        switch(sel){
+            case "Coltelli": s = new Style.Coltelli(); break;
+            case "Duellista": s = new Style.Duellista(); break;
+            case "Armi da Lancio": s = new Style.Lancio(); break;
+            case "Desperado": s = new Style.Desperado(); break;
+            case "Stile Cinematografico": s = new Style.Cinematografico(); break;
+            case "Arti Marziali": s = new Style.Marziali(); break;
+            case "Combattimento Acrobatico": s = new Style.Acrobatico(); break;
+            case "Gioco Sporco": s = new Style.Sporco(); break;
+            case "Rissa da Strda": s = new Style.Strada(); break;
+        }
+        return s;
     }
 
     ProCon selectProCon(boolean invert){
@@ -275,7 +307,7 @@ public class Gui {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ImageIcon img = new ImageIcon("media/sabbat.jpg");
         window.setIconImage(img.getImage());
-        window.setSize(1280, 1024);
+        window.setSize(1280, 720);
         panel = new JPanel(new BorderLayout());
         window.add(panel);
 
@@ -341,6 +373,7 @@ public class Gui {
                 updateDetails();
                 updateBloodWillPx();
                 updateDisciplines();
+                updateStyles();
                 updateBloodWillPx();
                 if(character.toChoosInfl()){
                     character.addInfluenza(selectInfl(true));
@@ -401,7 +434,7 @@ public class Gui {
 
         window.setJMenuBar(menuBar);
 
-        JPanel skillBody = new JPanel(new GridLayout(1, 3)); //to_adjust
+        JPanel skillBody = new JPanel(new GridLayout(1, 4));
 
         panel.add(skillBody, BorderLayout.CENTER);
 
@@ -443,6 +476,7 @@ public class Gui {
         skillBody.add(wrap);
         updateInfluencies();
 
+
         JPanel proConPanelWrap = new JPanel(new BorderLayout());
         proConPanelWrap.add(new JLabel("Pregi/difetti", SwingConstants.CENTER), BorderLayout.NORTH);
         proConPanel = new JPanel(new GridLayout(10, 1));
@@ -475,13 +509,35 @@ public class Gui {
         skillBody.add(wrap);
         updateProCon();
 
+
+        JPanel stylePanelWrap = new JPanel(new BorderLayout());
+        stylePanelWrap.add(new JLabel("Stili", SwingConstants.CENTER), BorderLayout.NORTH);
+        stylePanel = new JPanel(new GridLayout(5, 1));
+        stylePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        stylePanelWrap.add(stylePanel, BorderLayout.CENTER);
+        JButton addStyle = new JButton("Aggiungi Stile");
+        addStyle.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Style s = selectStyle();
+                character.addStile(s);
+                updateStyles();
+            }
+        });
+        stylePanelWrap.add(addStyle, BorderLayout.SOUTH);
+        wrap = new JPanel();
+        wrap.add(stylePanelWrap);
+        skillBody.add(wrap);
+        updateStyles();
+
         bloodWill = new JLabel("Sangue: 10 Will: 7", SwingConstants.CENTER);
+        Font f = bloodWill.getFont().deriveFont(20f);;
+        bloodWill.setFont(f);
         JPanel bpan = new JPanel(new BorderLayout());
         bpan.add(bloodWill, BorderLayout.NORTH);
         pxlab = new JLabel("Px rimanenti: " + character.getRemainingPx(), SwingConstants.CENTER);
+        pxlab.setFont(f);
         bpan.add(pxlab);
         panel.add(bpan, BorderLayout.SOUTH);
-
         panel.revalidate();
         panel.repaint();
 
@@ -517,6 +573,18 @@ public class Gui {
             inflPanel.add(e);
         }
         ((GridLayout) inflPanel.getLayout()).setVgap(5);
+        panel.revalidate();
+        panel.repaint();
+    }
+
+    void updateStyles(){
+        stylePanel.removeAll();
+        Iterator<Style> it = character.sIterator();
+        while(it.hasNext()){
+            Style s = it.next();
+            JPanel e = new SkillElement(s, false);
+            stylePanel.add(e);
+        }
         panel.revalidate();
         panel.repaint();
     }
