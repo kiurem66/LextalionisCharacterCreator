@@ -43,6 +43,14 @@ public class Gui {
             if(s instanceof Disciplina)
                 disc = true;
             remove = new JButton("-");
+            remove.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e){
+                    delete();
+                    updateDisciplines();
+                    updateInfluencies();
+                    updateBloodWillPx();
+                }
+            });
             remove.setMaximumSize(new Dimension(10,10));
             JPanel wrap = new JPanel();
             wrap.add(remove);
@@ -82,6 +90,53 @@ public class Gui {
                 character.removeInfl(character.searchInfl(label.getText()));
             }
         }
+    }
+
+    Disciplina selectDiscipline(){
+        String[] list = {"Animalità", "Ascendente", "Auspex", "Chimerismo", "Daimonion", "Demenza",
+                        "Dominazione", "Necromanzia", "Ottenebramento", "Potenza", "Proteide",
+                        "Quietus", "Robustezza", "Sanguinis", "Serpentis", "Taumaturgia",
+                        "Valeren", "Velocità", "Vicissitudine"};
+        JComboBox<String> jComboBox = new JComboBox<String>(list);
+        JOptionPane.showMessageDialog(window, jComboBox, "Seleziona Disciplina", JOptionPane.QUESTION_MESSAGE);
+        String sel = (String)(jComboBox.getSelectedItem());
+
+        Disciplina d =null;
+        switch(sel){
+            case "Animalità": d = new Disciplina.Animalità(); break;
+            case "Ascendente": d = new Disciplina.Ascendente(); break;
+            case "Auspex": d = new Disciplina.Auspex(); break;
+            case "Chimerismo": d = new Disciplina.Chimerismo(); break;
+            case "Daimonion": d = new Disciplina.Daimonion(); break;
+            case "Demenza": d = new Disciplina.Demenza(); break;
+            case "Dominazione": d = new Disciplina.Dominazione(); break;
+            case "Necromanzia": d = new Disciplina.Necromanzia(); break;
+            case "Ottenebramento": d = new Disciplina.Ottenebramento(); break;
+            case "Potenza": d = new Disciplina.Potenza(); break;
+            case "Proteide": d = new Disciplina.Proteide(); break;
+            case "Quietus": d = new Disciplina.Quietus(); break;
+            case "Robustezza": d = new Disciplina.Robustezza(); break;
+            case "Sanguinis": d = new Disciplina.Sanguinis(); break;
+            case "Serpentis": d = new Disciplina.Serpentis(); break;
+            case "Taumaturgia": d = new Disciplina.Taumaturgia(); break;
+            case "Valeren": d = new Disciplina.Valeren(); break;
+            case "Velocità": d = new Disciplina.Velocità(); break;
+            case "Vicissitudine": d = new Disciplina.Vicissitudine(); break;
+        }
+        d.setClan(false);
+        return d;
+    }
+
+    Influenza selectInfl(boolean clan){
+        String[] list = {"Accademiche", "Alta Società", "Clero", "Crimine", "Esercito"
+        ,               "Ghoul", "Medicina", "Media", "Mentore", "Occulto", "Politica",
+                        "Risorse", "Sicurezza", "Sopravvivenza"};
+        JComboBox<String> jComboBox = new JComboBox<String>(list);
+        JOptionPane.showMessageDialog(window, jComboBox, "Seleziona Disciplina", JOptionPane.QUESTION_MESSAGE);
+        String sel = (String)(jComboBox.getSelectedItem());
+        Influenza i = new Influenza(sel);
+        i.setClan(clan);
+        return i;
     }
 
     void save(){
@@ -201,6 +256,7 @@ public class Gui {
         clan.addItemListener(new ItemListener(){
             @Override
             public void itemStateChanged(ItemEvent e) {
+                if(e.getStateChange() != ItemEvent.SELECTED) return;
                 int gen = 0;
                 if(character.isVampire()){
                     gen = ((Vampire) character).getGen();
@@ -210,6 +266,9 @@ public class Gui {
                 updateDetails();
                 updateBloodWillPx();
                 updateDisciplines();
+                if(character.toChoosInfl()){
+                    character.addInfluenza(selectInfl(true));
+                }
                 updateInfluencies();
                 genPanel.setVisible(character.isVampire());
                 genPanel.revalidate();
@@ -278,6 +337,15 @@ public class Gui {
         discPanel = new JPanel(new GridLayout(10, 1));
         discPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         discPanelWrap.add(discPanel, BorderLayout.CENTER);
+        JButton addDisc = new JButton("Aggiungi Disciplina");
+        addDisc.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Disciplina d = selectDiscipline();
+                character.addDisciplina(d);
+                updateDisciplines();
+            }
+        });
+        discPanelWrap.add(addDisc, BorderLayout.SOUTH);
         JPanel wrap = new JPanel();
         wrap.add(discPanelWrap);
         skillBody.add(wrap);
@@ -288,6 +356,15 @@ public class Gui {
         inflPanel = new JPanel(new GridLayout(10, 1));
         inflPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         inflPanelWrap.add(inflPanel, BorderLayout.CENTER);
+        JButton addInfl = new JButton("Aggiungi Influenza");
+        addInfl.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                Influenza i = selectInfl(false);
+                character.addInfluenza(i);
+                updateInfluencies();
+            }
+        });
+        inflPanelWrap.add(addInfl, BorderLayout.SOUTH);
         wrap = new JPanel();
         wrap.add(inflPanelWrap);
         skillBody.add(wrap);
