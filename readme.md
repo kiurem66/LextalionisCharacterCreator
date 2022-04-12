@@ -4,4 +4,11 @@ LexTalionis change some things from the base handbook, so if you want to use thi
 
 
 # XLS Export
-The main way of exporting is via XLS, the sheet will be in the format of LexTallionis sheets.
+The main way of exporting is via XLS, the sheet is in the format of LexTallionis sheets.
+
+# Requirements
+* Java 11 or newer
+
+# Download
+* Windows: [LextalionisCharacterCreator.exe](https://github.com/kiurem66/LextalionisCharacterCreator/releases/download/v0.2-beta/LextalionisCharacterCreator.exe)
+* Mac/Linux: [LextalionisCharacterCreator.jar](https://github.com/kiurem66/LextalionisCharacterCreator/releases/download/v0.2-beta/LextalionisCharacterCreator.jar)
