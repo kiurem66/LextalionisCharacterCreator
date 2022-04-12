@@ -235,6 +235,7 @@ public class Gui {
             p = "Inserire nome difetto";
         }
         String nome = JOptionPane.showInputDialog(window, p);
+        if(nome == null || nome.equals("")) return null;
         SpinnerNumberModel sModel = new SpinnerNumberModel(0, 0, 100, 1);
         JSpinner spinner = new JSpinner(sModel);
         JOptionPane.showMessageDialog(window, spinner, "Inserire costo", JOptionPane.QUESTION_MESSAGE);
@@ -487,6 +488,7 @@ public class Gui {
         addPro.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 ProCon p = selectProCon(false);
+                if(p==null) return;
                 character.addProCon(p);
                 updateProCon();
                 updateBloodWillPx();
@@ -496,6 +498,7 @@ public class Gui {
         addCon.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
                 ProCon p = selectProCon(true);
+                if(p==null) return;
                 character.addProCon(p);
                 updateProCon();
                 updateBloodWillPx();

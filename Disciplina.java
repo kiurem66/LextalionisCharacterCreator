@@ -162,7 +162,7 @@ public abstract class Disciplina implements Skill, Iterable<Disciplina.Power>{
         }
 
         public Auspex(boolean pander) {
-            super("Ascendente", pander);
+            super("Auspex", pander);
             addPotere(new Power("Sensi Acuti", 1));
             addPotere(new Power("Percepire l'aura", 2));
             addPotere(new Power("Tocco dello Spirito", 3));
