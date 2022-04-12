@@ -3,6 +3,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.apache.poi.ss.formula.functions.Npv;
+
 /**
  * @author kyuRAM
  * 
@@ -101,6 +103,15 @@ public abstract class Character{
             }
         }
         throw new NoSuchElementException("Disciplina non presente");
+    }
+
+    public ProCon searchProCon(String nome){
+        for(ProCon p: setProCon){
+            if(p.nome().equals(nome)){
+                return p;
+            }
+        }
+        throw new NoSuchElementException("Pregio/difetto non presente");
     }
 
     public boolean isInDisc(String nome){

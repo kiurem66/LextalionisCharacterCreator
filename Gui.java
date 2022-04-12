@@ -27,6 +27,7 @@ public class Gui {
     String filepath = null;
     JPanel discPanel;
     JPanel inflPanel;
+    JPanel proConPanel;
 
 
     private class SkillElement extends JPanel {   
@@ -63,6 +64,7 @@ public class Gui {
                         }else{
                             character.searchInfl(label.getText()).setFirstLevelFree(first.isSelected());
                         }
+                        updateBloodWillPx();
                     }
                 });
                 wrap.add(first);
@@ -98,6 +100,50 @@ public class Gui {
             }else{
                 character.removeInfl(character.searchInfl(label.getText()));
             }
+            updateDisciplines();
+            updateInfluencies();
+        }
+    }
+
+    private class ProConElement extends JPanel{
+        JLabel label;
+        JLabel cost;
+        public ProConElement(ProCon p){
+            super(new GridLayout(1, 3));
+            GridLayout gr = (GridLayout)super.getLayout();
+            gr.setHgap(3);
+            JPanel wrap = new JPanel();
+            super.add(wrap);
+            JButton remove = new JButton("-");
+            remove.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e){
+                    delete();
+                    updateDisciplines();
+                    updateInfluencies();
+                    updateBloodWillPx();
+                }
+            });
+            remove.setMaximumSize(new Dimension(10,10));
+            wrap.add(remove);
+            label = new JLabel(p.nome(), SwingConstants.LEFT);
+            super.add(label);
+            gr = new GridLayout(1, 2);
+            gr.setVgap(3);
+            wrap = new JPanel(gr);
+            if(p.costo() > 0){
+                cost = new JLabel("Pregio");
+            }else{
+                cost = new JLabel("Difetto");
+            }
+            wrap.add(cost);
+            cost = new JLabel(""+Math.abs(p.costo()));
+            wrap.add(cost);
+            super.add(wrap);
+        }
+
+        void delete(){
+            character.removeProCon(character.searchProCon(label.getText()));
+            updateProCon();
         }
     }
 
@@ -146,6 +192,20 @@ public class Gui {
         Influenza i = new Influenza(sel);
         i.setClan(clan);
         return i;
+    }
+
+    ProCon selectProCon(boolean invert){
+        String p = "Inserire nome pregio";
+        if(invert){
+            p = "Inserire nome difetto";
+        }
+        String nome = JOptionPane.showInputDialog(window, p);
+        SpinnerNumberModel sModel = new SpinnerNumberModel(0, 0, 100, 1);
+        JSpinner spinner = new JSpinner(sModel);
+        JOptionPane.showMessageDialog(null, spinner, "Inserire costo", JOptionPane.QUESTION_MESSAGE);
+        int cost = (Integer)(spinner.getValue());
+        if(invert) cost *=-1;
+        return new ProCon(nome, cost);
     }
 
     void save(){
@@ -379,6 +439,36 @@ public class Gui {
         skillBody.add(wrap);
         updateInfluencies();
 
+        JPanel proConPanelWrap = new JPanel(new BorderLayout());
+        proConPanelWrap.add(new JLabel("Pregi/difetti", SwingConstants.CENTER), BorderLayout.NORTH);
+        proConPanel = new JPanel(new GridLayout(10, 1));
+        proConPanel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        proConPanelWrap.add(proConPanel, BorderLayout.CENTER);
+        JPanel bupan = new JPanel(new BorderLayout());
+        JButton addPro = new JButton("Aggiungi Pregio");
+        addPro.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                ProCon p = selectProCon(false);
+                character.addProCon(p);
+                updateProCon();
+            }
+        });
+        JButton addCon = new JButton("Aggiungi Difetto");
+        addCon.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                ProCon p = selectProCon(true);
+                character.addProCon(p);
+                updateProCon();
+            }
+        });
+        bupan.add(addPro, BorderLayout.NORTH);
+        bupan.add(addCon, BorderLayout.SOUTH);
+        proConPanelWrap.add(bupan, BorderLayout.SOUTH);
+        wrap = new JPanel();
+        wrap.add(proConPanelWrap);
+        skillBody.add(wrap);
+        updateProCon();
+
 
         bloodWill = new JLabel("Sangue: 10 Will: 7", SwingConstants.CENTER);
         JPanel bpan = new JPanel(new BorderLayout());
@@ -408,7 +498,7 @@ public class Gui {
             JPanel e = new SkillElement(d, d.isClan());
             discPanel.add(e);
         }
-        ((GridLayout) discPanel.getLayout()).setVgap(10);
+        ((GridLayout) discPanel.getLayout()).setVgap(5);
         panel.revalidate();
         panel.repaint();
     }
@@ -421,7 +511,19 @@ public class Gui {
             JPanel e = new SkillElement(i, i.isClan());
             inflPanel.add(e);
         }
-        ((GridLayout) inflPanel.getLayout()).setVgap(10);
+        ((GridLayout) inflPanel.getLayout()).setVgap(5);
+        panel.revalidate();
+        panel.repaint();
+    }
+
+    void updateProCon(){
+        proConPanel.removeAll();
+        Iterator<ProCon> it = character.pIterator();
+        while(it.hasNext()){
+            ProCon p = it.next();
+            proConPanel.add(new ProConElement(p));
+        }
+        ((GridLayout) proConPanel.getLayout()).setVgap(5);
         panel.revalidate();
         panel.repaint();
     }
