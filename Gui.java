@@ -2,8 +2,6 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
-
-
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
@@ -31,8 +29,7 @@ public class Gui {
     JPanel inflPanel;
 
 
-    private class SkillElement extends JPanel {
-        private JButton remove;   
+    private class SkillElement extends JPanel {   
         private JSpinner spinner;
         private JLabel label;
         private boolean disc;
@@ -42,21 +39,33 @@ public class Gui {
             disc = false;
             if(s instanceof Disciplina)
                 disc = true;
-            remove = new JButton("-");
-            remove.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e){
-                    delete();
-                    updateDisciplines();
-                    updateInfluencies();
-                    updateBloodWillPx();
-                }
-            });
-            remove.setMaximumSize(new Dimension(10,10));
             JPanel wrap = new JPanel();
-            wrap.add(remove);
             super.add(wrap);
-            if(clan){
-                remove.setEnabled(false);
+            if(!clan){
+                JButton remove = new JButton("-");
+                remove.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e){
+                        delete();
+                        updateDisciplines();
+                        updateInfluencies();
+                        updateBloodWillPx();
+                    }
+                });
+                remove.setMaximumSize(new Dimension(10,10));
+                wrap.add(remove);
+            }else{
+                JCheckBox first = new JCheckBox();
+                first.setSelected(s.isFirstLevelFree());
+                first.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e){
+                        if(disc){
+                            character.searchDisc(label.getText()).setFirstLevelFree(first.isSelected());
+                        }else{
+                            character.searchInfl(label.getText()).setFirstLevelFree(first.isSelected());
+                        }
+                    }
+                });
+                wrap.add(first);
             }
             label = new JLabel(s.getName(), SwingConstants.LEFT);
             super.add(label);
@@ -424,7 +433,7 @@ public class Gui {
     }
 
     void updateBloodWillPx(){
-        bloodWill.setText("Blood: "+character.getBlood()+" Will: "+character.getWill());
+        bloodWill.setText("Sangue: "+character.getBlood()+" Will: "+character.getWill());
         pxlab.setText("Px rimanenti: " + character.getRemainingPx());
         panel.revalidate();
         panel.repaint();
