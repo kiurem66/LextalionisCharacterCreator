@@ -15,6 +15,10 @@ public class XLS {
     private XLS(){}
 
     public static void export(Character character, String path) throws IOException{
+        export(character, path, true);
+    }
+
+    public static void export(Character character, String path, boolean skipClan) throws IOException{
         XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream("media/template.xlsx"));
         XSSFSheet sheet = wb.getSheet("Scheda");
         writeToCell(sheet, 0, 5, character.getName());
@@ -36,7 +40,7 @@ public class XLS {
 
         writeStyles(sheet, character.sIterator());
         writeInfluencies(sheet, character.inflIterator());
-        writeProCon(sheet, character.pIterator());
+        writeProCon(sheet, character.pIterator(), skipClan);
         writeDisciplines(sheet, character.discIterator());
 
         FileOutputStream fileOut = new FileOutputStream(path); 
@@ -116,12 +120,13 @@ public class XLS {
         
     }
 
-    private static void writeProCon(XSSFSheet sheet, Iterator<ProCon> it){
+    private static void writeProCon(XSSFSheet sheet, Iterator<ProCon> it, boolean skipClan){
         int iPro = 0;
         int iCon = 0;
         final int BASE = 34;
         while(it.hasNext()){
             ProCon p = it.next();
+            if(skipClan && p.isClan()) continue;
             if(p.costo() > 0 && iPro < 6){
                 writeToCell(sheet, BASE+iPro, 5, p.nome());
                 iPro++;

@@ -115,6 +115,9 @@ public class Gui {
             JPanel wrap = new JPanel();
             super.add(wrap);
             JButton remove = new JButton("-");
+            if(p.isClan()){
+                remove.setEnabled(false);
+            }
             remove.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e){
                     delete();
@@ -128,15 +131,15 @@ public class Gui {
             label = new JLabel(p.nome(), SwingConstants.LEFT);
             super.add(label);
             gr = new GridLayout(1, 2);
-            gr.setVgap(3);
+            gr.setVgap(5);
             wrap = new JPanel(gr);
             if(p.costo() > 0){
-                cost = new JLabel("Pregio");
+                cost = new JLabel("Pre", SwingConstants.CENTER);
             }else{
-                cost = new JLabel("Difetto");
+                cost = new JLabel("Dif", SwingConstants.CENTER);
             }
             wrap.add(cost);
-            cost = new JLabel(""+Math.abs(p.costo()));
+            cost = new JLabel(""+Math.abs(p.costo()), SwingConstants.RIGHT);
             wrap.add(cost);
             super.add(wrap);
         }
@@ -202,7 +205,7 @@ public class Gui {
         String nome = JOptionPane.showInputDialog(window, p);
         SpinnerNumberModel sModel = new SpinnerNumberModel(0, 0, 100, 1);
         JSpinner spinner = new JSpinner(sModel);
-        JOptionPane.showMessageDialog(null, spinner, "Inserire costo", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(window, spinner, "Inserire costo", JOptionPane.QUESTION_MESSAGE);
         int cost = (Integer)(spinner.getValue());
         if(invert) cost *=-1;
         return new ProCon(nome, cost);
@@ -451,6 +454,7 @@ public class Gui {
                 ProCon p = selectProCon(false);
                 character.addProCon(p);
                 updateProCon();
+                updateBloodWillPx();
             }
         });
         JButton addCon = new JButton("Aggiungi Difetto");
@@ -459,6 +463,7 @@ public class Gui {
                 ProCon p = selectProCon(true);
                 character.addProCon(p);
                 updateProCon();
+                updateBloodWillPx();
             }
         });
         bupan.add(addPro, BorderLayout.NORTH);
@@ -467,8 +472,10 @@ public class Gui {
         wrap = new JPanel();
         wrap.add(proConPanelWrap);
         skillBody.add(wrap);
+        ProCon p = new ProCon("Difetto di clan", 0);
+        p.setClan(true);
+        character.addProCon(p);
         updateProCon();
-
 
         bloodWill = new JLabel("Sangue: 10 Will: 7", SwingConstants.CENTER);
         JPanel bpan = new JPanel(new BorderLayout());
