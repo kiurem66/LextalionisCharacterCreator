@@ -1,7 +1,15 @@
 public class RevenantClan {
     private RevenantClan(){}
 
-    public static class Bratovich extends Ghoul{
+    private static class Revenant extends Ghoul{
+        public Revenant(){
+            ProCon p = new ProCon("Difetto di clan", 0);
+            p.setClan(true);
+            addProCon(p);
+        }
+    }
+
+    public static class Bratovich extends Revenant{
         public Bratovich(){
             super();
             addDisciplina(new Disciplina.Animalità());
@@ -17,7 +25,7 @@ public class RevenantClan {
         }
     }
 
-    public static class Grimaldi extends Ghoul{
+    public static class Grimaldi extends Revenant{
         public Grimaldi(){
             super();
             addDisciplina(new Disciplina.Dominazione());
@@ -33,7 +41,7 @@ public class RevenantClan {
         }
     }
 
-    public static class Obertus extends Ghoul{
+    public static class Obertus extends Revenant{
         public Obertus(){
             super();
             addDisciplina(new Disciplina.Auspex());
@@ -49,7 +57,7 @@ public class RevenantClan {
         }
     }
 
-    public static class Zantosa extends Ghoul{
+    public static class Zantosa extends Revenant{
         public Zantosa(){
             super();
             addDisciplina(new Disciplina.Ascendente());

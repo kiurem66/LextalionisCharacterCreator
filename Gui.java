@@ -335,9 +335,13 @@ public class Gui {
                 }
                 String sel = (String)((JComboBox<String>)e.getSource()).getSelectedItem();
                 character = ClanSelector.charSel(ClanSelector.get(sel));
+                if(character.isVampire()){
+                    ((Vampire) character).setGen(gen);
+                }
                 updateDetails();
                 updateBloodWillPx();
                 updateDisciplines();
+                updateBloodWillPx();
                 if(character.toChoosInfl()){
                     character.addInfluenza(selectInfl(true));
                 }
@@ -345,10 +349,7 @@ public class Gui {
                 genPanel.setVisible(character.isVampire());
                 genPanel.revalidate();
                 genPanel.repaint();
-                if(character.isVampire()){
-                    ((Vampire) character).setGen(gen);
-                    
-                }
+                
                 
             }
         });
@@ -472,9 +473,6 @@ public class Gui {
         wrap = new JPanel();
         wrap.add(proConPanelWrap);
         skillBody.add(wrap);
-        ProCon p = new ProCon("Difetto di clan", 0);
-        p.setClan(true);
-        character.addProCon(p);
         updateProCon();
 
         bloodWill = new JLabel("Sangue: 10 Will: 7", SwingConstants.CENTER);

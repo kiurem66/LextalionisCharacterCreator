@@ -4,16 +4,10 @@ public abstract class Vampire extends Character{
 
     public Vampire(){
         super();
+        ProCon p = new ProCon("Difetto di clan", 0);
+        p.setClan(true);
+        addProCon(p);
         gen = 13;
-    }
-
-    public Vampire(Character c){
-        super(c);
-        if(c instanceof Vampire){
-            gen = ((Vampire) c).gen;
-        }else{
-            gen = 13;
-        }
     }
 
     public int getGen() {
