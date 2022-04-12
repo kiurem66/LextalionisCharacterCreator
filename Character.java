@@ -196,7 +196,7 @@ public abstract class Character{
     public int getWill(){
         int c = 0;
         for(ProCon p : setProCon){
-            if(p.nome().equals("TODO")){ //TODO chiedere al master
+            if(p.nome().equals("TODO")){
                 c+=2;
             }
         }

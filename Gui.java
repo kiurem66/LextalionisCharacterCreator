@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
@@ -18,6 +19,8 @@ public class Gui {
     JTextField fazione;
     JPanel genPanel;
     JLabel bloodWill;
+    JPanel panel;
+    JLabel pxlab;
     
     JSpinner gen;
     JSpinner px;
@@ -124,7 +127,7 @@ public class Gui {
         ImageIcon img = new ImageIcon("media/sabbat.jpg");
         window.setIconImage(img.getImage());
         window.setSize(1280, 1024);
-        JPanel panel = new JPanel(new BorderLayout());
+        panel = new JPanel(new BorderLayout());
         window.add(panel);
 
         JPanel northGrid = new JPanel(new GridLayout(2,3));
@@ -162,6 +165,7 @@ public class Gui {
             public void stateChanged(ChangeEvent e) {
                 int p =  (Integer)(((JSpinner)e.getSource()).getValue());
                 character.setPx(p);
+                updateBloodWillPx();
             }
         });
         internPanel = new JPanel();
@@ -172,25 +176,27 @@ public class Gui {
 
         internPanel = new JPanel();
         buildList();
-        clan.addActionListener(new ActionListener(){
+        clan.addItemListener(new ItemListener(){
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void itemStateChanged(ItemEvent e) {
+                System.out.println("called " + (String)((JComboBox<String>)e.getSource()).getSelectedItem());
                 int gen = 0;
                 if(character.isVampire()){
                     gen = ((Vampire) character).getGen();
                 }
-                String sel = (String) ((JComboBox)e.getSource()).getSelectedItem();
+                String sel = (String)((JComboBox<String>)e.getSource()).getSelectedItem();
                 switch(sel){
                     case "Assamita": Gui.this.character = new Clan.Assamita(); break;
                     case "Baali": Gui.this.character = new Clan.Baali();
                 }
                 updateDetails();
-                updateBloodWill();
+                updateBloodWillPx();
                 updateDisciplines();
                 updateInfluencies();
                 if(character.isVampire()){
                     ((Vampire) character).setGen(gen);
                 }
+                
             }
         });
         internPanel.add(new JLabel("Clan "));
@@ -207,7 +213,7 @@ public class Gui {
             public void stateChanged(ChangeEvent e) {
                 int g = (Integer)(((JSpinner)e.getSource()).getValue());
                 ((Vampire) character).setGen(g);
-                updateBloodWill();
+                updateBloodWillPx();
             }
             
         });
@@ -267,8 +273,10 @@ public class Gui {
 
 
         bloodWill = new JLabel("Sangue: 10 Will: 7", SwingConstants.CENTER);
-        JPanel bpan = new JPanel();
-        bpan.add(bloodWill);
+        JPanel bpan = new JPanel(new BorderLayout());
+        bpan.add(bloodWill, BorderLayout.NORTH);
+        pxlab = new JLabel("Px rimanenti: " + character.getRemainingPx(), SwingConstants.CENTER);
+        bpan.add(pxlab);
         panel.add(bpan, BorderLayout.SOUTH);
 
         panel.revalidate();
@@ -293,6 +301,8 @@ public class Gui {
             discPanel.add(e);
         }
         ((GridLayout) discPanel.getLayout()).setVgap(10);
+        panel.revalidate();
+        panel.repaint();
     }
 
     void updateInfluencies(){
@@ -304,6 +314,8 @@ public class Gui {
             inflPanel.add(e);
         }
         ((GridLayout) inflPanel.getLayout()).setVgap(10);
+        panel.revalidate();
+        panel.repaint();
     }
 
     void updateDetails(){
@@ -312,8 +324,11 @@ public class Gui {
         character.setFazione(fazione.getText());
     }
 
-    void updateBloodWill(){
+    void updateBloodWillPx(){
         bloodWill.setText("Blood: "+character.getBlood()+" Will: "+character.getWill());
+        pxlab.setText("Px rimanenti: " + character.getRemainingPx());
+        panel.revalidate();
+        panel.repaint();
     }
 
     public static void main(String[] args) {
