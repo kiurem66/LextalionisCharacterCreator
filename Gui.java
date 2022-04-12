@@ -1,5 +1,4 @@
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.filechooser.FileFilter;
@@ -36,9 +35,13 @@ public class Gui {
         private JButton remove;   
         private JSpinner spinner;
         private JLabel label;
+        private boolean disc;
 
         public SkillElement(Skill s, boolean clan){
             super(new GridLayout(1,3));
+            disc = false;
+            if(s instanceof Disciplina)
+                disc = true;
             remove = new JButton("-");
             remove.setMaximumSize(new Dimension(10,10));
             JPanel wrap = new JPanel();
@@ -51,23 +54,34 @@ public class Gui {
             super.add(label);
             SpinnerModel model = new SpinnerNumberModel(s.getLevel(), 0, 5, 1);     
             spinner = new JSpinner(model);
+            spinner.addChangeListener(new ChangeListener() {
+                public void stateChanged(ChangeEvent e){
+                    update();
+                }
+            });
             wrap = new JPanel();
             wrap.add(spinner);
             super.add(wrap);
         }
 
-        public JButton getRemove() {
-            return remove;
+        void update(){
+            Skill s = null;
+            if(disc){
+                s = character.searchDisc(label.getText());
+            }else{
+                s = character.searchInfl(label.getText());
+            }
+            s.setLevel(((Integer)spinner.getValue()));
+            updateBloodWillPx();
         }
 
-        public JSpinner getSpinner() {
-            return spinner;
+        void delete(){
+            if(disc){
+                character.removeDisc(character.searchDisc(label.getText()));
+            }else{
+                character.removeInfl(character.searchInfl(label.getText()));
+            }
         }
-
-        public JLabel getLabel() {
-            return label;
-        }
-
     }
 
     void save(){
@@ -127,8 +141,8 @@ public class Gui {
     }
 
     JComboBox<String> clan;
-    public Gui(Character character){
-        this.character = character;
+    public Gui(Character chara){
+        this.character = chara;
         window = new JFrame("LexTalionis Character Creator");
         window.setVisible(true);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -187,22 +201,22 @@ public class Gui {
         clan.addItemListener(new ItemListener(){
             @Override
             public void itemStateChanged(ItemEvent e) {
-                System.out.println("called " + (String)((JComboBox<String>)e.getSource()).getSelectedItem());
                 int gen = 0;
                 if(character.isVampire()){
                     gen = ((Vampire) character).getGen();
                 }
                 String sel = (String)((JComboBox<String>)e.getSource()).getSelectedItem();
-                switch(sel){
-                    case "Assamita": Gui.this.character = new Clan.Assamita(); break;
-                    case "Baali": Gui.this.character = new Clan.Baali();
-                }
+                character = ClanSelector.charSel(ClanSelector.get(sel));
                 updateDetails();
                 updateBloodWillPx();
                 updateDisciplines();
                 updateInfluencies();
+                genPanel.setVisible(character.isVampire());
+                genPanel.revalidate();
+                genPanel.repaint();
                 if(character.isVampire()){
                     ((Vampire) character).setGen(gen);
+                    
                 }
                 
             }

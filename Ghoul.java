@@ -12,6 +12,11 @@ public class Ghoul extends Character{
     }
 
     @Override
+    public int getBlood() {
+        return 7;
+    }
+
+    @Override
     public boolean toChoosInfl() {
         return true;
     }

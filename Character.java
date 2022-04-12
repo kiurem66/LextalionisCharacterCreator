@@ -155,24 +155,24 @@ public abstract class Character{
         return getPx() - pxSpesi;
     }
 
-    public abstract boolean isVampire();
+    public boolean isVampire(){return false;}
 
     public int getBlood(){
         int robu = 0;
         if(isInDisc("Robustezza")){
             switch(searchDisc("Robustezza").getLevel()){
-                case 1: robu = 5;
-                case 2: robu = 10;
-                case 3: robu = 15;
-                case 4: robu = 25;
-                case 5: robu = 35;
-                default: robu = 0;
+                case 1: robu = 5; break;
+                case 2: robu = 10; break;
+                case 3: robu = 15; break;
+                case 4: robu = 25; break;
+                case 5: robu = 35; break;
+                default: robu = 0; break;
             }
         }
         int vici = 0;
         if(isInDisc("Vicissitudine")){
             vici = searchDisc("Vicissitudine").getLevel()*2;
-            if(vici == 1) vici = 0;
+            if(vici == 2) vici = 0;
         }
         return robu+vici;
     }
