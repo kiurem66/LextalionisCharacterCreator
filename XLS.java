@@ -19,7 +19,7 @@ public class XLS {
     }
 
     public static void export(Character character, String path, boolean skipClan) throws IOException{
-        XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream("media/template.xlsx"));
+        XSSFWorkbook wb = new XSSFWorkbook(Gui.class.getResourceAsStream("media/template.xlsx"));
         XSSFSheet sheet = wb.getSheet("Scheda");
         writeToCell(sheet, 0, 5, character.getName());
         writeToCell(sheet, 1, 0, character.getBlood());

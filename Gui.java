@@ -305,8 +305,8 @@ public class Gui {
         this.character = chara;
         window = new JFrame("LexTalionis Character Creator");
         window.setVisible(true);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ImageIcon img = new ImageIcon("media/sabbat.jpg");
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        
+        ImageIcon img = new ImageIcon(Gui.class.getResource("media/sabbat.jpg"));
         window.setIconImage(img.getImage());
         window.setSize(1280, 720);
         panel = new JPanel(new BorderLayout());
