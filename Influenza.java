@@ -63,4 +63,15 @@ public class Influenza implements Skill{
     public void setClan(boolean clan) {
         this.clan = clan;
     }
+
+    @Override
+    public int costCalc() {
+        int cost = 0;
+        for(int i=1; i<=getLevel(); i++){
+            if(i==1 && isFirstLevelFree()) continue;
+            cost += i*getBaseCost();
+            if(!clan) cost++;
+        }
+        return cost;
+    }
 }
