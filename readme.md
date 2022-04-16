@@ -10,5 +10,5 @@ The main way of exporting is via XLS, the sheet is in the format of LexTallionis
 * Java 11 or newer
 
 # Download
-* Windows: [LextalionisCharacterCreator.exe](https://github.com/kiurem66/LextalionisCharacterCreator/releases/download/v1.0.1/LextalionisCharacterCreator.exe)
-* Mac/Linux: [LextalionisCharacterCreator.jar](https://github.com/kiurem66/LextalionisCharacterCreator/releases/download/v1.0.1/LextalionisCharacterCreator.jar)
+* Windows: [LextalionisCharacterCreator.exe](https://github.com/kiurem66/LextalionisCharacterCreator/releases/download/v1.0.2/LextalionisCharacterCreator.exe)
+* Mac/Linux: [LextalionisCharacterCreator.jar](https://github.com/kiurem66/LextalionisCharacterCreator/releases/download/v1.0.2/LextalionisCharacterCreator.jar)
