@@ -201,7 +201,7 @@ public class Gui {
                         "Ghoul", "Medicina", "Media", "Mentore", "Occulto", "Politica",
                         "Risorse", "Sicurezza", "Sopravvivenza"};
         JComboBox<String> jComboBox = new JComboBox<String>(list);
-        JOptionPane.showMessageDialog(window, jComboBox, "Seleziona Disciplina", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(window, jComboBox, "Seleziona Influenza", JOptionPane.QUESTION_MESSAGE);
         String sel = (String)(jComboBox.getSelectedItem());
         Influenza i = new Influenza(sel);
         i.setClan(clan);
@@ -212,7 +212,7 @@ public class Gui {
         String[] list = {"Coltelli", "Duellista", "Armi da Lancio", "Desperado", "Stile Cinematografico"
                         ,"Arti Marziali", "Combattimento Acrobatico", "Gioco Sporco", "Rissa da Strda"};
         JComboBox<String> jComboBox = new JComboBox<String>(list);
-        JOptionPane.showMessageDialog(window, jComboBox, "Seleziona Disciplina", JOptionPane.QUESTION_MESSAGE);
+        JOptionPane.showMessageDialog(window, jComboBox, "Seleziona Stile", JOptionPane.QUESTION_MESSAGE);
         String sel = (String)(jComboBox.getSelectedItem());
         Style s = null;
         switch(sel){
