@@ -366,13 +366,14 @@ public class Gui {
                 if(character.isVampire()){
                     gen = ((Vampire) character).getGen();
                 }
+                int px = character.getPx();
                 String sel = (String)((JComboBox<String>)e.getSource()).getSelectedItem();
                 character = ClanSelector.charSel(ClanSelector.get(sel));
                 if(character.isVampire()){
                     ((Vampire) character).setGen(gen);
                 }
+                character.setPx(px);
                 updateDetails();
-                updateBloodWillPx();
                 updateDisciplines();
                 updateStyles();
                 updateBloodWillPx();
@@ -524,6 +525,7 @@ public class Gui {
                 Style s = selectStyle();
                 character.addStile(s);
                 updateStyles();
+                updateBloodWillPx();
             }
         });
         stylePanelWrap.add(addStyle, BorderLayout.SOUTH);
